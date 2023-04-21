@@ -1,0 +1,196 @@
+<app-nav-bar></app-nav-bar>
+<section class="h-100 bg-dark">
+  <div class="container-fluid py-5 h-100">
+    <div class="row">
+      <div class="col-md-10">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+          <div class="col">
+            <div class="card card-registration my-4">
+              <div class="row g-0">
+                <div class="col-xl-6">
+                  <div class="card-body p-md-5 text-black">
+                    <h3 class="mb-5 text-uppercase text-center">
+                      Shopping Cart
+                    </h3>
+                    <div class="row">
+                      <table class="table table-success table-striped">
+                        <thead>
+                          <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Producto</th>
+                            <th scope="col">Cantidad</th>
+                            <th scope="col">Precio U</th>
+                            <th scope="col">Total</th>
+                            <th scope="col">Opcion</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr
+                            *ngFor="let producto of productos; let i = index"
+                            class="table-info"
+                          >
+                            <th scope="row">{{ i + 1 }}</th>
+                            <td>{{ producto.nombre }}</td>
+                            <td class="text-center">
+                              {{ producto.cantidad_existente }}
+                            </td>
+                            <td>Q {{ producto.precio }}</td>
+                            <td>
+                              Q
+                              {{
+                                producto.precio * producto.cantidad_existente
+                              }}
+                            </td>
+                            <td>
+                              <button
+                                class="btn btn-success"
+                                (click)="quitProducto(i)"
+                              >
+                                Quit
+                              </button>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-6">
+                        <h6 class="text-center">Total a Pagar</h6>
+                        <table class="table table-success table-striped">
+                          <thead>
+                            <tr>
+                              <th scope="col">Cantidad de productos:</th>
+                              <th scope="col"></th>
+                              <th scope="col"></th>
+                              <th scope="col" class="text-center">
+                                {{ cantidad }}
+                              </th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr class="table-info">
+                              <th scope="row">Total a pagar:</th>
+                              <th scope="row"></th>
+                              <th scope="row"></th>
+                              <th scope="row">Q {{ total }}</th>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div class="col-md-6">
+                        <br />
+                        <div class="d-flex justify-content-end pt-3">
+                          <button
+                            type="button"
+                            class="btn btn-light btn-lg"
+                            (click)="resetAllCarrito()"
+                          >
+                            Borrar Carrito
+                          </button>
+                          <button
+                            type="button"
+                            class="btn btn-warning btn-lg ms-2"
+                          >
+                            Pagar Carrito
+                          </button>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-6">
+                          <input
+                          type="date"
+                          id="form3Example1m1"
+                          class="form-control form-control-lg"
+                        />
+                        <label class="form-label" for="form3Example1m1">
+                          Fecha de compra (fines para calificacion)
+                        </label>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-2">
+        <div class="row d-flex">
+          <div class="col">
+            <div class="card card-registration my-4">
+              <div class="row g-0">
+                <div class="col-xl-6">
+                  <div class="card-body text-black">
+                    <h5 class="mb-5 text-uppercase text-center">
+                      Datos de la Tarjeta
+                    </h5>
+                    <!-- Example single danger button -->
+                    <div class="btn-group">
+                      <button
+                        type="button"
+                        class="btn btn-success dropdown-toggle"
+                        data-bs-toggle="dropdown"
+                        aria-expanded="false"
+                      >
+                        Elegir Tarjeta
+                      </button>
+                      <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#">Action</a></li>
+                        <li>
+                          <a class="dropdown-item" href="#">Another action</a>
+                        </li>
+                        <li>
+                          <a class="dropdown-item" href="#"
+                            >Something else here</a
+                          >
+                        </li>
+                        <li><hr class="dropdown-divider" /></li>
+                        <li>
+                          <a class="dropdown-item" type="button" (click)="newTarjetClick()">Nueva tarjeta</a>
+                        </li>
+                      </ul>
+                    </div>
+                    <div *ngIf="newTarjet" class="row">
+                      <div class="form-outline">
+                        <input
+                          type="number"
+                          id="form3Example1m1"
+                          class="form-control form-control-lg"
+                          [(ngModel)]='numberTarjeta'
+                        />
+                        <label class="form-label" for="form3Example1m1">
+                          Numero de Tajeta
+                        </label>
+                        <input
+                          type="date"
+                          id="form3Example1m1"
+                          class="form-control form-control-lg"
+                          [(ngModel)]='fechaVencimiento'
+                        />
+                        <label class="form-label" for="form3Example1m1">
+                          Fecha de Vencimiento
+                        </label>
+                        <input
+                          type="number"
+                          id="form3Example1m1"
+                          class="form-control form-control-lg"
+                          [(ngModel)]='codigoSeguridad'
+                        />
+                        <label class="form-label" for="form3Example1m1">
+                          Codigo de seguridad
+                        </label>
+                        <button type="button" class="btn btn-info">Info</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<app-footer></app-footer>

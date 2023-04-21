@@ -1,0 +1,48 @@
+nav {
+    /* fallback for old browsers */
+    background: #f093fb;
+    
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: -webkit-linear-gradient(to bottom right, rgb(93, 174, 240), rgb(57, 118, 231));
+    
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: linear-gradient(to bottom right, rgb(94, 170, 241), rgb(245, 87, 245))
+    }
+    
+    .card-registration .select-input.form-control[readonly]:not([disabled]) {
+    font-size: 1rem;
+    line-height: 2.15;
+    padding-left: .75em;
+    padding-right: .75em;
+    }
+    .card-registration .select-arrow {
+    top: 13px;
+    }
+
+
+.hero {
+    position: relative;
+    width: 100%;
+    height: 250px;
+    background: rgb(50, 50, 50);
+    background: url(https://cdn.shopify.com/s/files/1/2098/0315/files/tipos-muebles-sala.jpg?v=1623074681)
+      no-repeat 50% 50% fixed;
+    background-size: 130%;
+    overflow: hidden;
+  }
+  
+  h1 {
+    text-align: center;
+    color: #000000;
+  }
+
+  .hero h1 {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    padding: 0.3em;
+    font-size: 3em;
+    font-weight: lighter;
+  }
+  

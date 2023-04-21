@@ -1,0 +1,44 @@
+<app-nav-bar></app-nav-bar>
+<section class="bg-info">
+    <div class="container py-5 h-100" >
+      <div
+        class="container text-center col-sm-12">
+        <div class="col col-xl-10">
+          <div class="card" style="border-radius: 1rem">
+            <div class="row g-0">
+              <h1>Datos personales</h1>
+                <div class="card-body p-4 p-lg-5 text-black">
+                  <form class="row g-3">
+                    <div class="col-md-6">
+                      <label for="inputEmail4" class="form-label">Nombres</label>
+                      <label for="inputEmail4" class="form-control btn-light">{{usuario.nombre}}</label>
+                    </div>
+                    <div class="col-md-6">
+                      <label for="inputPassword4" class="form-label">Apellido</label>
+                      <label for="inputPassword4" class="form-control btn-light">{{usuario.apellido}}</label>
+                    </div>
+                    <div class="col-12">
+                    </div>
+                    <div class="col-md-6">
+                      <label for="inputEmail4" class="form-label">CUI</label>
+                      <label for="inputEmail4" class="form-control">{{usuario.DPI}}</label>
+                    </div>
+                    <div class="col-md-6">
+                      <label for="inputPassword4" class="form-label">Tipo Usuario</label>
+                      <label for="inputPassword4" class="form-control">{{usuario.name_rol}}</label>
+                    </div>
+                    <div class="col-md-6">
+                      <label for="inputCity" class="form-label">Nueva contraseña</label>
+                      <input type="password" class="form-control" id="inputCity" />
+                      <br>
+                      <button type="submit" class="btn btn-outline-primary">Actualizar</button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+      </div>
+    </div>
+  </section>
+  <app-footer></app-footer>

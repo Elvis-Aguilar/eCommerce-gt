@@ -1,0 +1,71 @@
+*usuarios
+    -nombre
+    -apellido
+    -DPI 
+    -password
+    -tipo_rol
+    -name_rol
+    
+*productos
+    -nombre
+    -precio
+    -imagen
+    -descripcion
+    -vendedor
+        -DPI 
+        -nombre
+        -apellido
+    -categorias
+
+*categorias
+    -nombre
+    -descripcion
+    -imagen
+    
+    
+*venta_producto
+    -fecha
+    -nombre_producto
+    -precio_producto
+    -cantidad_vendida
+    -vendedor
+        -DPI 
+        -nombre
+        -apellido
+    -comprador
+        -DPI 
+        -nombre
+        -apellido
+    
+*ganancias_venta
+    -fecha
+    -ganancia_empresa
+    -ganancia_vendedor
+    -vendedor
+        -DPI 
+        -nombre
+        -apellido
+        
+        
+*peticiones
+    -estado
+    -fecha_venta
+    -fecha_entrega
+    -productos[]
+        -nombre
+        -precio
+        -cantidad
+    -comprador
+        -DPI 
+        -nombre
+        -apellido
+
+
+
+
+
+
+
+
+
+

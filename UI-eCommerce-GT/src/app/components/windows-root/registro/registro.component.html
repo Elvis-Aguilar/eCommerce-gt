@@ -1,0 +1,51 @@
+<section class="gradient-custom">
+    <div class="container py-5 h-100">
+      <div class="row justify-content-center align-items-center h-100">
+        <div class="col-12 col-lg-9 col-xl-7">
+          <div class="card shadow-2-strong card-registration" style="border-radius: 15px;">
+            <div class="card-body p-4 p-md-5">
+              <h2 class="">Formulario Registrarse en el Sistema</h2>
+              <h5 class="mb-4 pb-2 pb-md-0 mb-md-5">Llena los campos que se te solicitan</h5>
+              <form [formGroup]="loginForm" (ngSubmit)="registrar()" >
+                <div class="row">
+                  <div class="col-md-6 mb-4">
+                    <div class="form-outline">
+                      <input type="text" id="firstName" class="form-control form-control-lg" placeholder="Nombre completo"
+                      formControlName="nombre" />
+                      <label class="form-label" for="firstName">Nombres</label>
+                    </div>
+                  </div>
+                  <div class="col-md-6 mb-4">
+                    <div class="form-outline">
+                      <input type="text" id="lastName" placeholder="example 00123500" class="form-control form-control-lg"  placeholder="Apellidos"
+                      formControlName="apellido" />
+                      <label class="form-label" for="lastName">Apellidos</label>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 mb-4">
+                      <div class="form-outline">
+                        <input type="text" id="firstName" class="form-control form-control-lg" placeholder="example: 3235492250801" 
+                        formControlName="DPI" [pattern]="myPattern"/>
+                        <label class="form-label" for="firstName">DPI</label>
+                      </div>
+                    </div>
+                    <div class="col-md-6 mb-4">
+                      <div class="form-outline">
+                        <input type="password" id="lastName" class="form-control form-control-lg" 
+                        formControlName="password" />
+                        <label class="form-label" for="lastName">Contraseña</label>
+                      </div>
+                    </div>
+                  </div>
+                <div  class="mt-4 pt-2">
+                  <button [disabled]="loginForm.invalid" type="submit" class="btn btn-primary">Registrarme</button>
+              </div>
+            </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>

@@ -1,0 +1,49 @@
+<div
+  class="my-2 mx-auto p-relative bg-white shadow-1 blue-hover"
+  style="width: 360px; overflow: hidden; border-radius: 1px"
+>
+  <img
+    [src]="imagen"
+    alt="Man with backpack"
+    class="d-block w-full"
+  />
+  <div class="px-2 py-2">
+    <p
+    class="mb-1"
+    >
+     Precio: Q. {{producto.precio}}
+    </p>
+    <h1
+      class="ff-serif font-weight-normal text-black card-heading mt-0 mb-1"
+      style="line-height: 1.25"
+    >
+     {{producto.nombre}}
+    </h1>
+
+    <p class="mb-1">
+        {{producto.descripcion}}
+    </p>
+    <p
+      class="mb-0 small font-weight-medium text-uppercase mb-1 text-muted lts-2px"
+    >
+     Cantidad existente: {{producto.cantidad_existente}}
+    </p>
+  </div>
+
+  <a
+    type="button"
+    class="text-uppercase d-inline-block font-weight-medium lts-2px ml-2 mb-2 text-center styled-link"
+   >
+    Explorar Mas
+  </a>
+  <a
+    type="button"
+    class="text-uppercase d-inline-block font-weight-medium lts-2px ml-2 mb-2 text-center styled-link"
+    (click)="addProducShoppingCart()">
+    agregar
+  </a>
+  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart-plus-fill" viewBox="0 0 16 16">
+    <path d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1H.5zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0zM9 5.5V7h1.5a.5.5 0 0 1 0 1H9v1.5a.5.5 0 0 1-1 0V8H6.5a.5.5 0 0 1 0-1H8V5.5a.5.5 0 0 1 1 0z"/>
+  </svg>
+  
+</div>

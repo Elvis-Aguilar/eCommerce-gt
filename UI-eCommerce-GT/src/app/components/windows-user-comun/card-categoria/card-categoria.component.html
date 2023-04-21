@@ -1,0 +1,35 @@
+<div
+  class="my-2 mx-auto p-relative bg-white shadow-1 blue-hover"
+  style="width: 360px; overflow: hidden; border-radius: 1px"
+>
+  <img
+    [src]="imagen"
+    alt="Man with backpack"
+    class="d-block w-full"
+  />
+  <div class="px-2 py-2">
+    <p
+      class="mb-0 small font-weight-medium text-uppercase mb-1 text-muted lts-2px"
+    >
+      categoria
+    </p>
+    <h1
+      class="ff-serif font-weight-normal text-black card-heading mt-0 mb-1"
+      style="line-height: 1.25"
+    >
+     {{categoria.nombre}}
+    </h1>
+
+    <p class="mb-1">
+        {{categoria.descripcion}}
+    </p>
+  </div>
+
+  <a
+    type="button"
+    class="text-uppercase d-inline-block font-weight-medium lts-2px ml-2 mb-2 text-center styled-link"
+   (click)="goProductos()"
+    >
+    Explorar Mas
+  </a>
+</div>
