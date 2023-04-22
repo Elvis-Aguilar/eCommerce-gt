@@ -10,7 +10,7 @@ const saveGanancia = async (req, res)=> {
         fecha: req.body.fecha,
         ganancia_empresa: req.body.ganancia_empresa,
         ganancia_vendedor: req.body.ganancia_vendedor,
-        vendedor: req.body.vendedor
+        vendedor: req.body.vendedor 
     });
     const newGanancia = await insertGanancia.save();
     res.json(newGanancia)

@@ -3,7 +3,7 @@ const Schema = mongosee.Schema;
 const model = mongosee.model;
 
 const peticionSchema = new Schema({
-    estado: Boolean,
+    estado: String,
     fecha_venta:Date,
     fecha_entrega: Date,
     productos: Array,

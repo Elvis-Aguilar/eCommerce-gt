@@ -6,6 +6,7 @@ const productosRoutes = require('./routes/productos.routes')
 const ventasRoutes = require('./routes/ventarProducto.routes')
 const gananciaRoutes = require('./routes/ganancias.routes')
 const peticionRoutes = require('./routes/peticiones.routes')
+const controllerProducto = require('./controllers/ProductoController')
 
 
 
@@ -28,12 +29,13 @@ async function start(){
             family: 4
         });
         console.log('conectado a la base de datos: ', db.connection.name)
-    } catch (error) {
-        console.log(error)
+        //controllerProducto.descontarProducto(3235494450901,1,"Laptop Lenovo 15´ 15ITL5 Core i3 de 8GB Ram 256GB SSD")
+    } catch (error) { 
+        console.log(error) 
     }
 }
 
-start()
+start() 
 
 app.use('/api/users', usersRoutes)
 

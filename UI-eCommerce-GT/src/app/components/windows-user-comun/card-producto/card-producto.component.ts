@@ -48,7 +48,6 @@ export class CardProductoComponent implements OnInit {
     } else {
       let indexof=this.sesion.productosShopping.findIndex((producto) => producto._id === this.producto._id)
       if (indexof!== -1) {
-        console.log(this.sesion.productosShopping[indexof])
         this.sesion.productosShopping[indexof].cantidad_existente++
       }else{
         let produc ={ ...this.producto}

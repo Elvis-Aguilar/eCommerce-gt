@@ -11,6 +11,14 @@ const getProductos = async (req, res) => {
     res.json(productos)
 }
 
+const descontarProducto = async (DPI,cantidadVendida,nombreP)=> {
+    const producto = await Producto.findOne({nombre:nombreP,"vendedor.DPI": DPI})
+    const cantidadAcutalizada = producto.cantidad_existente-cantidadVendida
+    const productoUpdate = await Producto.updateMany({nombre:nombreP,"vendedor.DPI": DPI},{$set: {cantidad_existente:cantidadAcutalizada}})
+}
+
+
+
 const getImgProducto = async (req, res) => {
     res.set('Content-Type', 'image/jpg');
     const url = req.query.url
@@ -21,5 +29,6 @@ const getImgProducto = async (req, res) => {
 
 module.exports = {
     getProductos:getProductos,
-    getImgProducto:getImgProducto
+    getImgProducto:getImgProducto,
+    descontarProducto:descontarProducto 
 }

@@ -90,6 +90,7 @@
                           <button
                             type="button"
                             class="btn btn-warning btn-lg ms-2"
+                            (click)="comprarCarrito()"
                           >
                             Pagar Carrito
                           </button>
@@ -101,6 +102,7 @@
                           type="date"
                           id="form3Example1m1"
                           class="form-control form-control-lg"
+                          #fechaInput
                         />
                         <label class="form-label" for="form3Example1m1">
                           Fecha de compra (fines para calificacion)

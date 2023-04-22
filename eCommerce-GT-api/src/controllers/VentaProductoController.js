@@ -1,4 +1,5 @@
 const Venta = require('../models/VentaProducto')
+const controllerProducto = require('./ProductoController')
 
 /**
  * guarda un nuevo Venta
@@ -15,7 +16,8 @@ const saveVenta = async (req, res)=> {
         comprador: req.body.comprador
     });
     const newVenta = await insertVenta.save();
-    res.json(newUser)
+    controllerProducto.descontarProducto()
+    res.json(newVenta)
 }
 
 module.exports = {

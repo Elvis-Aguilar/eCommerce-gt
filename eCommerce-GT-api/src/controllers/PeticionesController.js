@@ -6,7 +6,7 @@ const Peticion = require('../models/Peticiones')
  * @param {*} res 
  */
 const savePeticion = async (req, res)=> {
-    const insertPeticion = new Venta({
+    const insertPeticion = new Peticion({
         estado: req.body.estado,
         fecha_venta: req.body.fecha_venta,
         fecha_entrega: req.body.fecha_entrega,
@@ -15,6 +15,7 @@ const savePeticion = async (req, res)=> {
     });
     const newPeticion = await insertPeticion.save();
     res.json(newPeticion)
+
 }
 
 module.exports = {
