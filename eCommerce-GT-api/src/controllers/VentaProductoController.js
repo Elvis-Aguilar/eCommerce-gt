@@ -16,7 +16,7 @@ const saveVenta = async (req, res)=> {
         comprador: req.body.comprador
     });
     const newVenta = await insertVenta.save();
-    controllerProducto.descontarProducto()
+    controllerProducto.descontarProducto(newVenta.vendedor,newVenta.cantidad_vendida,newVenta.nombre_producto)
     res.json(newVenta)
 }
 

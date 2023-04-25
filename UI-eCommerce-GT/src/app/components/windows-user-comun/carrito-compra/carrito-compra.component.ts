@@ -117,6 +117,7 @@ export class CarritoCompraComponent implements OnInit {
     peticion.fecha_entrega.setDate(peticion.fecha_venta.getDate()+5)
     peticion.productos=product
     this.peticionService.savePeticion(peticion).subscribe((value:Peticion) =>{
+      this.resetAllCarrito()
       this.msjCompra(value)
     })
   }

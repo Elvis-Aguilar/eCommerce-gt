@@ -14,4 +14,4 @@ const ventaSchema = new Schema({
     versionKey: false
 })
 
-module.exports = model('venta_producto', ventaSchema)
+module.exports = model('venta_productos', ventaSchema)

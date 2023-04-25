@@ -12,4 +12,4 @@ const gananciaSchema = new Schema({
     versionKey: false
 })
 
-module.exports = model('ganancias_venta', gananciaSchema)
+module.exports = model('ganancias_ventas', gananciaSchema)
