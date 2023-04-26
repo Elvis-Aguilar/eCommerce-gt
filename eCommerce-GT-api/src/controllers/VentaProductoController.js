@@ -13,13 +13,20 @@ const saveVenta = async (req, res)=> {
         precio_producto: req.body.precio_producto,
         cantidad_vendida: req.body.cantidad_vendida,
         vendedor: req.body.vendedor,
-        comprador: req.body.comprador
+        comprador: req.body.comprador,
+        
     });
     const newVenta = await insertVenta.save();
     controllerProducto.descontarProducto(newVenta.vendedor,newVenta.cantidad_vendida,newVenta.nombre_producto)
     res.json(newVenta)
 }
 
+const getProductosSinFecha = async (req, res)=> {
+    const venta = await Venta.find({"vendedor.DPI":Number(req.query.DPI)})
+    res.json(venta)
+}
+
 module.exports = {
-    saveVenta:saveVenta
+    saveVenta:saveVenta,
+    getProductosSinFecha:getProductosSinFecha
 }

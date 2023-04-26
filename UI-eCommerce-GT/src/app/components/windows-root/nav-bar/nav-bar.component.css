@@ -1,12 +1,12 @@
 nav {
     /* fallback for old browsers */
-    background: #f093fb;
+    background: #caf4ff;
     
     /* Chrome 10-25, Safari 5.1-6 */
     background: -webkit-linear-gradient(to bottom right, rgb(93, 174, 240), rgb(57, 118, 231));
     
     /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-    background: linear-gradient(to bottom right, rgb(94, 170, 241), rgb(245, 87, 245))
+    background: linear-gradient(to bottom right, rgb(94, 170, 241), rgb(62, 87, 168))
     }
     
     .card-registration .select-input.form-control[readonly]:not([disabled]) {

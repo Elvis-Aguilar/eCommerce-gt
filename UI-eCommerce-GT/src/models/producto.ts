@@ -6,6 +6,6 @@ export class Producto {
     img!: String
     descripcion!: String
     vendedor!: Usuario
-    categorias!:[]
+    categorias!:String[]
     cantidad_existente!:number
 }

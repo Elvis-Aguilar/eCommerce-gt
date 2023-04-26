@@ -35,4 +35,11 @@ export class NavBarComponent implements OnInit {
     this.router.navigate(['area-comun/shopping-cart'])
   }
 
+  goMisVentas(){
+    this.router.navigate(['area-comun/mis-ventas'])
+  }
+
+
+  
+
 }

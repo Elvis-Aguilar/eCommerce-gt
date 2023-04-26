@@ -14,4 +14,8 @@ export class VentaService {
   public saveVenta(venta:Venta): Observable<Venta>{
     return this.httpClient.post<Venta>(this.API_URL+'save-venta',venta)
   }
+
+  public getPreoductosUser(DPI:Number): Observable<Venta[]>{
+    return this.httpClient.get<Venta[]>(this.API_URL+'get-ventas-user?DPI='+DPI)
+  }
 }

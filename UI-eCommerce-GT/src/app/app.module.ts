@@ -14,6 +14,7 @@ import { CardProductoComponent } from './components/windows-user-comun/card-prod
 import { HomeProductosComponent } from './components/windows-user-comun/home-productos/home-productos.component';
 import { WindowHomeComponent } from './components/windows-user-comun/window-home/window-home.component';
 import { CarritoCompraComponent } from './components/windows-user-comun/carrito-compra/carrito-compra.component';
+import { FormProductoComponent } from './components/windows-user-comun/form-producto/form-producto.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { CarritoCompraComponent } from './components/windows-user-comun/carrito-
     CardProductoComponent,
     HomeProductosComponent,
     WindowHomeComponent,
-    CarritoCompraComponent
+    CarritoCompraComponent,
+    FormProductoComponent
   ],
   imports: [
     BrowserModule,

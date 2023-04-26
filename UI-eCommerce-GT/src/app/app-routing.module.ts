@@ -1,3 +1,4 @@
+import { FormProductoComponent } from './components/windows-user-comun/form-producto/form-producto.component';
 import { CarritoCompraComponent } from './components/windows-user-comun/carrito-compra/carrito-compra.component';
 import { WindowHomeComponent } from './components/windows-user-comun/window-home/window-home.component';
 import { HomeProductosComponent } from './components/windows-user-comun/home-productos/home-productos.component';
@@ -39,6 +40,11 @@ const routes: Routes = [
   {
     path: 'area-comun/shopping-cart',
     component: CarritoCompraComponent,
+    canActivate: [AuthenticationService]
+  },
+  {
+    path: 'area-comun/mis-ventas',
+    component: FormProductoComponent,
     canActivate: [AuthenticationService]
   },
   {

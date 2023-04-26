@@ -7,6 +7,8 @@ const ventasRoutes = require('./routes/ventarProducto.routes')
 const gananciaRoutes = require('./routes/ganancias.routes')
 const peticionRoutes = require('./routes/peticiones.routes')
 const controllerProducto = require('./controllers/ProductoController')
+const path = require('path');
+const multer = require('multer');
 
 
 
@@ -20,6 +22,9 @@ app.use(express.json())
 // Configuración del CORS
 app.use(cors());
 
+
+  
+  
 
 async function start(){
     try {

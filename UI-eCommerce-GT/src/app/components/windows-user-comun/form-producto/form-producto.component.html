@@ -1,0 +1,178 @@
+<app-nav-bar></app-nav-bar>
+<section style="background-color: #eff5ff">
+  <div class="container-fluid py-1">
+    <div class="text-center">
+      <button type="button" class="btn btn-info" (click)="mostrarForm()">
+        Formulario para nuevo Producto
+      </button>
+      <button type="button" class="btn btn-warning" (click)="mostrarRpor()">
+        Reporte de Mis productos vendidos
+      </button>
+    </div>
+    <br>
+    <div
+      *ngIf="mostrarFormulario"
+      class="row justify-content-center align-items-center h-100"
+    >
+      <div class="col-12 col-lg-9 col-xl-7">
+        <div
+          class="card shadow-2-strong card-registration"
+          style="border-radius: 15px"
+        >
+          <div class="card-body p-4 p-md-5">
+            <h3 class="mb-4 pb-2 pb-md-0 mb-md-5">
+              Formulario para Registrar un Producto Nuevo
+            </h3>
+            <div>
+              <div class="row">
+                <div class="col-md-12 mb-1">
+                  <div class="form-outline">
+                    <input
+                      type="text"
+                      id="firstName"
+                      class="form-control form-control-lg"
+                      [(ngModel)]='nombreProducto'
+                    />
+                    <label class="form-label" for="firstName"
+                      >Nombre del Producto</label
+                    >
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6 mb-1 d-flex align-items-center">
+                  <div class="form-outline datepicker w-100">
+                    <input
+                      type="number"
+                      class="form-control form-control-lg"
+                      id="birthdayDate"
+                      [(ngModel)]='cantidadExisitente'
+                    />
+                    <label for="birthdayDate" class="form-label"
+                      >cantidad Existente</label
+                    >
+                  </div>
+                </div>
+                <div class="col-md-6 mb-1 d-flex align-items-center">
+                  <div class="form-outline datepicker w-100">
+                    <input
+                      type="number"
+                      class="form-control form-control-lg"
+                      id="birthdayDate"
+                      [(ngModel)]='precioProducto'
+                    />
+                    <label for="birthdayDate" class="form-label">Precio</label>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12 mb-4">
+                  <div class="form-outline">
+                    <input
+                      type="text"
+                      id="lastName"
+                      placeholder="pequeña descripcion obligatoria"
+                      class="form-control form-control-lg"
+                      [(ngModel)]='descripcion'
+                    />
+                    <label class="form-label" for="lastName">Descripcion</label>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12 mb-4">
+                  <div class="form-outline">
+                    <div
+                      class="btn-group"
+                      role="group"
+                      aria-label="Basic checkbox toggle button group"
+                    >
+                      <div *ngFor="let categoria of categorias; let i = index" >
+                        <input
+                        type="checkbox"
+                        class="btn-check"
+                        id={{categoria.nombre}}
+                        autocomplete="off"
+                        (click)="capturarCategoria(categoria.nombre)"
+                      />
+                      <label class="btn btn-outline-primary" for={{categoria.nombre}}
+                        >{{categoria.nombre}}</label
+                      >
+                      </div>
+                    </div>
+                  </div>
+                  <label class="form-label" for="lastName"
+                    >Selecciona las Categorias de tu producto</label
+                  >
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6 mb-4 d-flex align-items-center">
+                  <div class="form-outline datepicker w-100">
+                    <input  type="file" accept="image/*" (change)="onFileSelected($event)"  class="form-control form-control-lg" />
+                    <label for="birthdayDate" class="form-label"
+                      >Imagen del producto</label
+                    >
+                  </div>
+                </div>
+              </div>
+              <div class="mt-4 pt-2">
+                <button (click)="registrarProducto()" type="button" class="btn btn-primary">Registrar</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br>
+    <div *ngIf="mostrarReporte" class="row">
+        <h2 class="text-center" >Productos Vendidos</h2>
+      <table class="table table-success table-striped">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Producto</th>
+            <th scope="col">Fecha Vendida</th>
+            <th scope="col">Cantidad Vendida</th>
+            <th scope="col">Ganancia</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let venta of ventas; let i = index"  class="table-info">
+            <th scope="row">{{i+1}}</th>
+            <td>{{venta.nombre_producto}}</td>
+            <td>{{venta.fecha.toISOString().substring(0, 10)}}</td>
+            <td class="text-center" >{{venta.cantidad_vendida}}</td>
+            <td>Q {{((venta.precio_producto*venta.cantidad_vendida)*0.95).toFixed(2)}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="row">
+        <h2 class="text-center" >Productos Publicados</h2>
+      <table class="table table-success table-striped">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Producto</th>
+            <th scope="col">Cantidad</th>
+            <th scope="col">Precio</th>
+            <th scope="col">Agegar 1 unidad</th>
+          </tr>
+        </thead>
+        <tbody >
+          <tr *ngFor="let producto of productos; let i = index" class="table-info">
+            <th scope="row">{{i+1}}</th>
+            <td>{{producto.nombre}}</td>
+            <td class="text-center" >{{producto.cantidad_existente}}</td>
+            <td>Q {{producto.precio}}</td>
+            <td>
+              <button class="btn btn-success">Aumentar</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+<app-footer></app-footer>
