@@ -31,9 +31,6 @@ export class FormProductoComponent implements OnInit {
   formData!: FormData
 
 
-
-
-
   constructor(private sesion:SesionService, private categoriaService:CategoriesService,
               private productoService:ProductoService, private ventaService:VentaService) { }
 
@@ -103,12 +100,19 @@ export class FormProductoComponent implements OnInit {
       // Aquí puedes enviar el formulario al servidor utilizando una solicitud HTTP
     }
   }
+  
   registrarProducto(){
     if (this.validrForm()) {
       this.productoService.saveImgProducto(this.formData).subscribe(
         (value: String) =>{
           if (value !== undefined && value !== null) {
             this.saveProducto(value)
+          }else{
+            Swal.fire(
+              'Ups!!',
+              'Ocurrio un error en el servidor: comuniquese con soporte :V',
+              'error'
+            );
           }
         }
       )
@@ -136,8 +140,16 @@ export class FormProductoComponent implements OnInit {
     producto.vendedor = userTemp
     this.productoService.saveProducto(producto).subscribe(
       (value: Producto) =>{
-        this.productos.push(value)
-        this.limpiarForm()
+        if (value.nombre != undefined) {
+          this.productos.push(value)
+          this.limpiarForm()
+        }else{
+          Swal.fire(
+            'Ups!!',
+            'Ocurrio un error en el servidor: comuniquese con soporte :V',
+            'error'
+          );
+        }
       }
     )
 
@@ -149,9 +161,32 @@ export class FormProductoComponent implements OnInit {
     this.categoriasSelect = []
     this.precioProducto = 0
     this.descripcion = ''
+    Swal.fire(
+      'Proceso completado!!',
+      'Producto enviado a los encargados de paqueteria para Verificacion si el paquete es aceptado se publicara',
+      'success'
+    );
     
   }
 
+
+  clickAumentar(index:number){
+    this.productos[index].cantidad_existente++
+    this.productoService.aumetarCantidad(this.productos[index]).subscribe(
+      (value: Producto) =>{
+        console.log(value)
+        if (value._id != undefined) {
+        this.productos[index] = value
+        }else{
+          Swal.fire(
+            'Ups!!',
+            'Ocurrio un error en el servidor: comuniquese con soporte :V',
+            'error'
+          );
+        }
+      }
+    )
+  }
 
 
   validrForm():boolean{

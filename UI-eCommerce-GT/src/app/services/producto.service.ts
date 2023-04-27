@@ -32,4 +32,8 @@ export class ProductoService {
     return this.httpClient.get<Producto[]>(this.API_URL+'get-producto-user?DPI='+DPI);
   }
 
+  public aumetarCantidad(producto:Producto): Observable<Producto>{
+    return this.httpClient.put<Producto>(this.API_URL+'umentar-cantidad',producto);
+  }
+
 }

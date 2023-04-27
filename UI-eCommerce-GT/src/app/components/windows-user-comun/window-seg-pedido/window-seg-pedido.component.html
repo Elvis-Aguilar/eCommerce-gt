@@ -1,0 +1,53 @@
+<app-nav-bar></app-nav-bar>
+<section style="background-color: hsl(218, 100%, 96%)">
+    <div class="container-xl py-2" >
+        <div class="card px-2">
+            <h1 class="text-center" >Pedidos "Entregados"</h1>
+            <table class="table table-bordered  border-info">
+                <thead>
+                  <tr class="table-success">
+                    <th class="text-center" scope="col">#</th>
+                    <th class="text-center" scope="col">Fecha Pedido</th>
+                    <th class="text-center" scope="col">Fecha Entrega</th>
+                    <th class="text-center" scope="col">Cantidad Productos</th>
+                    <th class="text-center" scope="col">Ver Productos el pedido</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let pedido of pedidosEntregados let i= index">
+                    <th class="text-center"  scope="row">{{i+1}}</th>
+                    <td class="text-center" >{{pedido.fecha_venta.toISOString().substring(0, 10)}}</td>
+                    <td class="text-center" >{{pedido.fecha_entrega.toISOString().substring(0, 10)}}</td>
+                    <td class="text-center" >{{pedido.productos.length}}</td>
+                    <td class="text-center" ><button type="button" class="btn btn-link" (click)="mostrarDatosProdcuto(i, false)" >ver detalles</button></td>
+                  </tr>
+                </tbody>
+              </table>
+        </div>
+        <br>
+        <div class="card px-2">
+            <h1 class="text-center" >Pedidos "En Curso"</h1>
+            <table class="table table-bordered  border-info">
+                <thead>
+                  <tr class="table-success">
+                    <th class="text-center" scope="col">#</th>
+                    <th class="text-center" scope="col">Fecha Pedido</th>
+                    <th class="text-center" scope="col">Fecha Entrega</th>
+                    <th class="text-center" scope="col">Cantidad Productos</th>
+                    <th class="text-center" scope="col">Ver Productos del pedido</th>
+                  </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let pedido of pedidosEnCuros let i= index">
+                        <th class="text-center"  scope="row">{{i+1}}</th>
+                        <td class="text-center" >{{pedido.fecha_venta.toISOString().substring(0, 10)}}</td>
+                        <td class="text-center" >{{pedido.fecha_entrega.toISOString().substring(0, 10)}}</td>
+                        <td class="text-center" >{{pedido.productos.length}}</td>
+                        <td class="text-center" ><button type="button" class="btn btn-link" (click)="mostrarDatosProdcuto(i,true)" >ver detalles</button></td>
+                      </tr>
+                </tbody>
+              </table>
+        </div>
+    </div>
+</section>
+<app-footer></app-footer>

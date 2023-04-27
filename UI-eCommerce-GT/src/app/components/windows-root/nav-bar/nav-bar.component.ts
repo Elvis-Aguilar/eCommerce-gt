@@ -1,7 +1,9 @@
+import { PeticionService } from './../../../services/peticion.service';
 import { SesionService } from 'src/app/services/sesion.service';
 import { Router } from '@angular/router';
 import { Usuario } from './../../../../models/usuario';
 import { Component, OnInit } from '@angular/core';
+import { Peticion } from 'src/models/peticion';
 
 @Component({
   selector: 'app-nav-bar',
@@ -37,6 +39,10 @@ export class NavBarComponent implements OnInit {
 
   goMisVentas(){
     this.router.navigate(['area-comun/mis-ventas'])
+  }
+
+   goMisPeidos(){
+    this.router.navigate(['area-comun/mis-pedidos'])
   }
 
 

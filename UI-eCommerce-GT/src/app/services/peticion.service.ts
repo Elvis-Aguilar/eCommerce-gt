@@ -15,4 +15,21 @@ export class PeticionService {
   public savePeticion(peticion:Peticion): Observable<Peticion>{
     return this.httpClient.post<Peticion>(this.API_URL+'save-peticion',peticion)
   }
+
+  public getPeticionesEnCuros(DPI:number): Observable<Peticion[]>{
+    return this.httpClient.get<Peticion[]>(this.API_URL+'get-peticion-curso?DPI='+DPI)
+  }
+
+  public getPeticionesEntregados(DPI:number): Observable<Peticion[]>{
+    return this.httpClient.get<Peticion[]>(this.API_URL+'get-peticion-entregados?DPI='+DPI)
+  }
+
+
+
+
+
+
+
+
+
 }

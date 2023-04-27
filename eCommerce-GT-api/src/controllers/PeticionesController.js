@@ -18,6 +18,20 @@ const savePeticion = async (req, res)=> {
 
 }
 
+const getPeticionEnCuros = async (req, res)=> {
+    const DPI = req.query.DPI
+    const peticiones = await Peticion.find({estado:"En Curso","comprador.DPI":Number(DPI)});
+    res.json(peticiones)
+}
+
+const getPeticionEntregado = async (req, res)=> {
+    const DPI = req.query.DPI
+    const peticiones = await Peticion.find({estado:"Entregado","comprador.DPI":Number(DPI)});
+    res.json(peticiones) 
+}
+
 module.exports = {
-    savePeticion:savePeticion
+    savePeticion:savePeticion,
+    getPeticionEnCuros:getPeticionEnCuros,
+    getPeticionEntregado:getPeticionEntregado
 }

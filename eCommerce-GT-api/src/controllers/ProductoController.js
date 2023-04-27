@@ -18,6 +18,11 @@ const getProductosUser = async (req, res) => {
     res.json(productosUser)
 }
 
+const aumentarProducto = async (req, res )=> {
+    const productoUpdate = await Producto.updateMany({_id:req.body._id},{$set: {cantidad_existente:req.body.cantidad_existente}})
+    res.json(req.body)
+}
+
 const descontarProducto = async (vendedor,cantidadVendida,nombreP)=> {
     const productoTemp = await Producto.findOne({nombre:nombreP,"vendedor.DPI": vendedor.DPI})
     const cantidadAcutalizada = productoTemp.cantidad_existente-cantidadVendida
@@ -31,7 +36,7 @@ const saveProducto =async (req, res) => {
         img: req.body.img,
         descripcion: req.body.descripcion,
         vendedor: req.body.vendedor,
-        categorias:req.body.categorias,
+        categorias:req.body.categaumentarProductoorias,
         cantidad_existente:req.body.cantidad_existente
     })
     const newProducto = await productoInsert.save();
@@ -66,5 +71,6 @@ module.exports = {
     descontarProducto:descontarProducto,
     getProductosUser:getProductosUser,
     upload:upload,
-    saveProducto:saveProducto
+    saveProducto:saveProducto,
+    aumentarProducto:aumentarProducto
 }
