@@ -66,6 +66,24 @@
         "name_rol": "paqueteria",
         "tipo_rol": 2,
         "password":"Maria123"
+    },
+
+    {
+        "nombre":"Ramon Gerson",
+        "apellido":"Menchu Tzoc",
+        "DPI": 3275494450801,
+        "name_rol": "Administrador",
+        "tipo_rol": 3,
+        "password":"Ramon123"
     }
 ]
+
+db.usuarios.insert({
+    "nombre":"Ramon Gerson",
+    "apellido":"Menchu Tzoc",
+    "DPI": 3275494450801,
+    "name_rol": "Administrador",
+    "tipo_rol": 3,
+    "password":"Ramon123"
+})
 

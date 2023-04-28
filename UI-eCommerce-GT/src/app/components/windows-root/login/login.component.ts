@@ -66,6 +66,11 @@ export class LoginComponent implements OnInit {
         LoginComponent.autenticado= true
         this.router.navigate(['area-paqueteria/perfil'])
         break;
+
+      case 3:
+          LoginComponent.autenticado= true
+          this.router.navigate(['area-administrativa/perfil'])
+          break;
       default:
         break;
     }

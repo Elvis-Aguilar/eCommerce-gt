@@ -28,6 +28,9 @@ export class NavBarComponent implements OnInit {
     if (this.usuario.tipo_rol === 2) {
       this.router.navigate(['area-paqueteria/perfil'])
     }
+    if (this.usuario.tipo_rol === 3) {
+      this.router.navigate(['area-administrativa/perfil'])
+    }
 
   }
 
@@ -56,6 +59,10 @@ export class NavBarComponent implements OnInit {
   }
   goGestionProdctos(){
     this.router.navigate(['area-paqueteria/gestion-productos'])
+  }
+
+  goRegistrarNewEmpleado(){
+    this.router.navigate(['area-administrativa/new-empleado'])
   }
 
 

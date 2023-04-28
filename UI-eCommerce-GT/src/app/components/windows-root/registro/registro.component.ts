@@ -16,18 +16,29 @@ export class RegistroComponent implements OnInit {
   
   loginForm!: FormGroup;
   myPattern = '^[0-9]{13}$';
+  mostrarNavFooter= false
+  rol="comun"
+  tipoRol=1
   constructor(private formBuilder: FormBuilder,
     private userService:UserService,
     private sesion:SesionService,
     private router:Router) { }
   
   ngOnInit(): void {
+    this.mostrarNavFooter=LoginComponent.autenticado
+    if (this.mostrarNavFooter) {
+      this.rol="Administrador"
+      this.tipoRol=3
+    }else{
+      this.rol="comun"
+      this.tipoRol=1
+    }
     this.loginForm = this.formBuilder.group({
       nombre: [null, Validators.required],
       apellido:[null, Validators.required],
       DPI:[null, Validators.required],
-      name_rol:["comun", Validators.required],
-      tipo_rol:[1, Validators.required],
+      name_rol:[this.rol, Validators.required],
+      tipo_rol:[this.tipoRol, Validators.required],
       password: [null, Validators.required],
     });
   }
@@ -42,6 +53,7 @@ export class RegistroComponent implements OnInit {
             'error'
           );
         }else{
+         if (!this.mostrarNavFooter) {
           Swal.fire(
             'Bienvenido!!',
             'Bienvenido a Ecommerce-GT',
@@ -50,9 +62,21 @@ export class RegistroComponent implements OnInit {
           this.sesion.usuario = value
           LoginComponent.autenticado= true
           this.router.navigate(['area-comun/perfil'])
+         }else{
+          Swal.fire(
+            'Completado!!',
+            'Usuario Creado con exito',
+            'success'
+          );
+         }
         }
       },(error: any) => {}
     )
+  }
+
+  cambiarRol(rol:string, tipo:number){
+    this.loginForm.value.name_rol=rol
+    this.loginForm.value.tipo_rol=tipo
   }
 
 }

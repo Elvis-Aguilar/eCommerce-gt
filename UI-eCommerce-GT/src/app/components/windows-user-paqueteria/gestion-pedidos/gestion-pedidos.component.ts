@@ -67,6 +67,11 @@ export class GestionPedidosComponent implements OnInit {
 
   setEstadoEntregado(index:number){
     this.peticionService.setEstado(this.pedidosEnCuros[index]).subscribe((value: Peticion) =>{
+      Swal.fire(
+        'Completado',
+        'Pedido Entregado con exito',
+        'success'
+      );
       this.getPedidosEnCuros()
     })
   }

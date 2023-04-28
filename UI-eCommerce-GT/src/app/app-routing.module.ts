@@ -71,6 +71,16 @@ const routes: Routes = [
     canActivate: [AuthenticationService]
   },
   {
+    path: 'area-administrativa/perfil',
+    component: PerfilComponent,
+    canActivate: [AuthenticationService]
+  },
+  {
+    path: 'area-administrativa/new-empleado',
+    component: RegistroComponent,
+    canActivate: [AuthenticationService]
+  },
+  {
     path: '**',
     component: LoginComponent,
   },

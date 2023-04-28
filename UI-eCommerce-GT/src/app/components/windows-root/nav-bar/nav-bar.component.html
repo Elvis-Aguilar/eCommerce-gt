@@ -59,6 +59,23 @@
           </a>
         </div>
       </div>
+
+       <!-- solo se muestra cuando el usuario es Administrador -->
+       <div *ngIf="usuario.tipo_rol === 3" class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" type="button"  (click)="goRegistrarNewEmpleado()" >Nuevo Usuario
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" type="button"  (click)="goPerfil()">Perfil</a>
+          </li>
+        </ul>
+        <div class="navbar-brand">
+          <a class="nav-link" type="button" >Area Reportes 
+          </a>
+        </div>
+      </div>
     </div>
   </nav>
   <div *ngIf="sesion.mostrarHead && usuario.tipo_rol === 1" class="hero">

@@ -18,6 +18,8 @@ import { FormProductoComponent } from './components/windows-user-comun/form-prod
 import { WindowSegPedidoComponent } from './components/windows-user-comun/window-seg-pedido/window-seg-pedido.component';
 import { GestionPedidosComponent } from './components/windows-user-paqueteria/gestion-pedidos/gestion-pedidos.component';
 import { GestionProductosComponent } from './components/windows-user-paqueteria/gestion-productos/gestion-productos.component';
+import { AreaReportsComponent } from './components/winwows-admin/area-reports/area-reports.component';
+import { TableTopProductosComponent } from './components/winwows-admin/table-top-productos/table-top-productos.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +37,9 @@ import { GestionProductosComponent } from './components/windows-user-paqueteria/
     FormProductoComponent,
     WindowSegPedidoComponent,
     GestionPedidosComponent,
-    GestionProductosComponent
+    GestionProductosComponent,
+    AreaReportsComponent,
+    TableTopProductosComponent
   ],
   imports: [
     BrowserModule,
