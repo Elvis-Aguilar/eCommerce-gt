@@ -62,10 +62,16 @@ export class LoginComponent implements OnInit {
         LoginComponent.autenticado= true
         this.router.navigate(['area-comun/home'])
         break;
+      case 2:
+        LoginComponent.autenticado= true
+        this.router.navigate(['area-paqueteria/perfil'])
+        break;
       default:
         break;
     }
   }
+
+  
 
   public goWindowComun(){
 

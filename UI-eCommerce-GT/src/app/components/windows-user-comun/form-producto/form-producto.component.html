@@ -173,6 +173,56 @@
         </tbody>
       </table>
     </div>
+    <div class="row">
+      <h2 class="text-center" >Productos Pendientes</h2>
+    <table class="table table-success table-striped">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Producto</th>
+          <th scope="col">Cantidad</th>
+          <th scope="col">Precio</th>
+          <th scope="col">Agegar 1 unidad</th>
+        </tr>
+      </thead>
+      <tbody >
+        <tr *ngFor="let producto of productosPendientes; let i = index" class="table-info">
+          <th scope="row">{{i+1}}</th>
+          <td>{{producto.nombre}}</td>
+          <td class="text-center" >{{producto.cantidad_existente}}</td>
+          <td>Q {{producto.precio}}</td>
+          <td>
+            <button class="btn btn-success" (click)="clickAumentar(i)">Aumentar</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="row">
+    <h2 class="text-center" >Productos Rechazados</h2>
+  <table class="table table-success table-striped">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Producto</th>
+        <th scope="col">Cantidad</th>
+        <th scope="col">Precio</th>
+        <th scope="col">Agegar 1 unidad</th>
+      </tr>
+    </thead>
+    <tbody >
+      <tr *ngFor="let producto of productosRechazados; let i = index" class="table-info">
+        <th scope="row">{{i+1}}</th>
+        <td>{{producto.nombre}}</td>
+        <td class="text-center" >{{producto.cantidad_existente}}</td>
+        <td>Q {{producto.precio}}</td>
+        <td>
+          <button class="btn btn-success" (click)="clickAumentar(i)">Aumentar</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
   </div>
 </section>
 <app-footer></app-footer>

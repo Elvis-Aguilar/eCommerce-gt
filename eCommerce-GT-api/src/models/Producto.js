@@ -9,7 +9,8 @@ const productoSchema = new Schema({
     descripcion: String,
     vendedor: Object,
     categorias:Array,
-    cantidad_existente:Number
+    cantidad_existente:Number,
+    estado:String 
 },
 {
     versionKey: false

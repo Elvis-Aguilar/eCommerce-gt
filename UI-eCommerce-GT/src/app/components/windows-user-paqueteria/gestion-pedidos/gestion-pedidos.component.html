@@ -1,0 +1,31 @@
+<app-nav-bar></app-nav-bar>
+<section style="background-color: hsl(218, 100%, 96%)">
+    <div class="container-xl py-2" >
+        <div class="card px-2">
+            <h1 class="text-center" >Pedidos "En Curso"</h1>
+            <table class="table table-bordered  border-info">
+                <thead>
+                  <tr class="table-success">
+                    <th class="text-center" scope="col">#</th>
+                    <th class="text-center" scope="col">Fecha Pedido</th>
+                    <th class="text-center" scope="col">Fecha Entrega</th>
+                    <th class="text-center" scope="col">Cantidad Productos</th>
+                    <th class="text-center" scope="col">Detalles del pedido</th>
+                    <th class="text-center" scope="col">Entregar Producto</th>
+                  </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let pedido of pedidosEnCuros let i= index">
+                        <th class="text-center"  scope="row">{{i+1}}</th>
+                        <td class="text-center" >{{pedido.fecha_venta.toISOString().substring(0, 10)}}</td>
+                        <td class="text-center" >{{pedido.fecha_entrega.toISOString().substring(0, 10)}}</td>
+                        <td class="text-center" >{{pedido.productos.length}}</td>
+                        <td class="text-center" ><button type="button" class="btn btn-link" (click)="mostrarDatosProdcuto(i)" >ver detalles</button></td>
+                        <td class="text-center" ><button type="button" class="btn btn-warning" (click)="setEstadoEntregado(i)">Entregar</button></td>
+                      </tr>
+                </tbody>
+              </table>
+        </div>
+    </div>
+</section>
+<app-footer></app-footer>

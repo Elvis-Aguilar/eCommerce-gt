@@ -20,9 +20,19 @@ export class PeticionService {
     return this.httpClient.get<Peticion[]>(this.API_URL+'get-peticion-curso?DPI='+DPI)
   }
 
+  public getPeticionesEnCurosAll(): Observable<Peticion[]>{
+    return this.httpClient.get<Peticion[]>(this.API_URL+'get-peticion-curso-all')
+  }
+
   public getPeticionesEntregados(DPI:number): Observable<Peticion[]>{
     return this.httpClient.get<Peticion[]>(this.API_URL+'get-peticion-entregados?DPI='+DPI)
   }
+
+  public setEstado(peticion:Peticion): Observable<Peticion>{
+    return this.httpClient.put<Peticion>(this.API_URL+'set-estado', peticion)
+  }
+
+  
 
 
 

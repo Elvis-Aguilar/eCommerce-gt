@@ -21,6 +21,9 @@ export class FormProductoComponent implements OnInit {
   categorias:Categoria[]=[]
   categoriasSelect:String[]=[]
   productos:Producto[]=[]
+  productosRechazados:Producto[]=[]
+  productosPendientes:Producto[]=[]
+
   ventas:Venta[]=[]
   
   nombreProducto = ''
@@ -38,6 +41,8 @@ export class FormProductoComponent implements OnInit {
     this.sesion.mostrarHead=false
     this.getCategorias()
     this.getProductos()
+    this.getProductosPendientes()
+    this.getProductosRechzados()
     this.getVentas()
   }
 
@@ -64,6 +69,20 @@ export class FormProductoComponent implements OnInit {
     this.productoService.getProductosUser(this.sesion.usuario.DPI).subscribe(
       (value: Producto[]) =>{
       this.productos = value
+    })
+  }
+
+  getProductosRechzados(){
+    this.productoService.getProductosUserRechazados(this.sesion.usuario.DPI).subscribe(
+      (value: Producto[]) =>{
+      this.productosRechazados = value
+    })
+  }
+
+  getProductosPendientes(){
+    this.productoService.getProductosUserPendientes(this.sesion.usuario.DPI).subscribe(
+      (value: Producto[]) =>{
+      this.productosPendientes = value
     })
   }
 

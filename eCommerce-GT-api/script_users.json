@@ -38,5 +38,34 @@
         "name_rol": "comun",
         "tipo_rol": 1,
         "password":"Maria123"
+    },
+
+
+
+
+
+
+
+
+
+
+
+
+    {
+        "nombre":"Francisco German",
+        "apellido":"Tax Paz",
+        "DPI": 3235443350901,
+        "name_rol": "paqueteria",
+        "tipo_rol": 2,
+        "password":"Francisco123"
+    },
+    {
+        "nombre":"Maria Mercedez",
+        "apellido":"Menchu Paxtor",
+        "DPI": 3275494450901,
+        "name_rol": "paqueteria",
+        "tipo_rol": 2,
+        "password":"Maria123"
     }
 ]
+

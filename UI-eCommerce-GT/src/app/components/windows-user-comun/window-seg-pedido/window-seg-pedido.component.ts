@@ -84,13 +84,6 @@ export class WindowSegPedidoComponent implements OnInit {
       const fechaString2 = peticion.fecha_venta;
       peticion.fecha_venta = new Date(fechaString2);
     });
-
-    this.pedidosEnCuros.forEach(peticion => {
-      const fechaString = peticion.fecha_entrega;
-      peticion.fecha_entrega = new Date(fechaString);
-      const fechaString2 = peticion.fecha_venta;
-      peticion.fecha_venta = new Date(fechaString2);
-    });
   }
   limpiarFechasEnCurso(){
     this.pedidosEnCuros.forEach(peticion => {

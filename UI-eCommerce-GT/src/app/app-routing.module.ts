@@ -1,3 +1,5 @@
+import { GestionProductosComponent } from './components/windows-user-paqueteria/gestion-productos/gestion-productos.component';
+import { GestionPedidosComponent } from './components/windows-user-paqueteria/gestion-pedidos/gestion-pedidos.component';
 import { WindowSegPedidoComponent } from './components/windows-user-comun/window-seg-pedido/window-seg-pedido.component';
 import { FormProductoComponent } from './components/windows-user-comun/form-producto/form-producto.component';
 import { CarritoCompraComponent } from './components/windows-user-comun/carrito-compra/carrito-compra.component';
@@ -51,6 +53,21 @@ const routes: Routes = [
   {
     path: 'area-comun/mis-pedidos',
     component: WindowSegPedidoComponent,
+    canActivate: [AuthenticationService]
+  },
+  {
+    path: 'area-paqueteria/perfil',
+    component: PerfilComponent,
+    canActivate: [AuthenticationService]
+  },
+  {
+    path: 'area-paqueteria/gestion-pedidos',
+    component: GestionPedidosComponent,
+    canActivate: [AuthenticationService]
+  },
+  {
+    path: 'area-paqueteria/gestion-productos',
+    component: GestionProductosComponent,
     canActivate: [AuthenticationService]
   },
   {

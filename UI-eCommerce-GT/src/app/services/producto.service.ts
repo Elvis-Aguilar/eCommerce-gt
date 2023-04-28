@@ -31,9 +31,23 @@ export class ProductoService {
   public getProductosUser(DPI:Number): Observable<Producto[]>{
     return this.httpClient.get<Producto[]>(this.API_URL+'get-producto-user?DPI='+DPI);
   }
+  public getProductosUserPendientes(DPI:Number): Observable<Producto[]>{
+    return this.httpClient.get<Producto[]>(this.API_URL+'get-producto-user-pendiente?DPI='+DPI);
+  }
+  public getProductosUserRechazados(DPI:Number): Observable<Producto[]>{
+    return this.httpClient.get<Producto[]>(this.API_URL+'get-producto-user-rechazado?DPI='+DPI);
+  }
+
+  public getProductosPendientes(): Observable<Producto[]>{
+    return this.httpClient.get<Producto[]>(this.API_URL+'get-producto-pendientes');
+  }
 
   public aumetarCantidad(producto:Producto): Observable<Producto>{
     return this.httpClient.put<Producto>(this.API_URL+'umentar-cantidad',producto);
+  }
+
+  public setEstado(producto:Producto): Observable<Producto>{
+    return this.httpClient.put<Producto>(this.API_URL+'set-Estado',producto);
   }
 
 }

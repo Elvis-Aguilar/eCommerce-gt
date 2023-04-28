@@ -18,10 +18,16 @@ export class NavBarComponent implements OnInit {
 
 
   ngOnInit(): void {
+    this.usuario = this.sesion.usuario
   }
 
   goPerfil(){
-    this.router.navigate(['area-comun/perfil'])
+    if (this.usuario.tipo_rol === 1) {
+      this.router.navigate(['area-comun/perfil'])
+    }
+    if (this.usuario.tipo_rol === 2) {
+      this.router.navigate(['area-paqueteria/perfil'])
+    }
 
   }
 
@@ -43,6 +49,13 @@ export class NavBarComponent implements OnInit {
 
    goMisPeidos(){
     this.router.navigate(['area-comun/mis-pedidos'])
+  }
+
+  goGestionPedidos(){
+    this.router.navigate(['area-paqueteria/gestion-pedidos'])
+  }
+  goGestionProdctos(){
+    this.router.navigate(['area-paqueteria/gestion-productos'])
   }
 
 

@@ -8,4 +8,5 @@ export class Producto {
     vendedor!: Usuario
     categorias!:String[]
     cantidad_existente!:number
+    estado!:String
 }

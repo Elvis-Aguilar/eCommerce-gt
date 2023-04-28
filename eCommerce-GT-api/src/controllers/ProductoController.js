@@ -9,17 +9,36 @@ const path = require('path');
  */
 const getProductos = async (req, res) => {
     const categoria = req.query.categoria
-    const productos = await Producto.find({categorias :categoria, cantidad_existente:{$gt: 0}})
+    const productos = await Producto.find({estado:'Aceptado',categorias :categoria, cantidad_existente:{$gt: 0}})
     res.json(productos)
 }
 
 const getProductosUser = async (req, res) => {
-    const productosUser = await Producto.find({"vendedor.DPI":Number(req.query.DPI)})
+    const productosUser = await Producto.find({estado:'Aceptado',"vendedor.DPI":Number(req.query.DPI)})
     res.json(productosUser)
+}
+
+const getProductosUserPendinte = async (req, res) => {
+    const productosUser = await Producto.find({estado:'Pendiente',"vendedor.DPI":Number(req.query.DPI)})
+    res.json(productosUser)
+}
+const getProductosUserRechazado = async (req, res) => {
+    const productosUser = await Producto.find({estado:'Rechazado',"vendedor.DPI":Number(req.query.DPI)})
+    res.json(productosUser)
+}
+
+const getProductosPendientes = async (req, res) => {
+    const productos = await Producto.find({estado:'Pendiente'})
+    res.json(productos)
 }
 
 const aumentarProducto = async (req, res )=> {
     const productoUpdate = await Producto.updateMany({_id:req.body._id},{$set: {cantidad_existente:req.body.cantidad_existente}})
+    res.json(req.body)
+}
+
+const setEstado = async (req, res )=> {
+    const productoUpdate = await Producto.updateMany({_id:req.body._id},{$set: {estado:req.body.estado}})
     res.json(req.body)
 }
 
@@ -37,7 +56,8 @@ const saveProducto =async (req, res) => {
         descripcion: req.body.descripcion,
         vendedor: req.body.vendedor,
         categorias:req.body.categaumentarProductoorias,
-        cantidad_existente:req.body.cantidad_existente
+        cantidad_existente:req.body.cantidad_existente,
+        estado:'Pendiente'
     })
     const newProducto = await productoInsert.save();
     res.json(newProducto)
@@ -72,5 +92,9 @@ module.exports = {
     getProductosUser:getProductosUser,
     upload:upload,
     saveProducto:saveProducto,
-    aumentarProducto:aumentarProducto
+    aumentarProducto:aumentarProducto,
+    getProductosPendientes:getProductosPendientes,
+    setEstado:setEstado,
+    getProductosUserRechazado:getProductosUserRechazado,
+    getProductosUserPendinte:getProductosUserPendinte
 }
