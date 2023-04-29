@@ -1,4 +1,5 @@
-[
+//insert de usuarios comunes
+db.usuarios.insert([
     {
         "nombre":"Miguel Fernando",
         "apellido":"Tax Socop",
@@ -38,19 +39,12 @@
         "name_rol": "comun",
         "tipo_rol": 1,
         "password":"Maria123"
-    },
+    }
 
+])
 
-
-
-
-
-
-
-
-
-
-
+//insersion de usuarios administrador y paqueteria
+db.usuarios.insert([
     {
         "nombre":"Francisco German",
         "apellido":"Tax Paz",
@@ -76,14 +70,5 @@
         "tipo_rol": 3,
         "password":"Ramon123"
     }
-]
-
-db.usuarios.insert({
-    "nombre":"Ramon Gerson",
-    "apellido":"Menchu Tzoc",
-    "DPI": 3275494450801,
-    "name_rol": "Administrador",
-    "tipo_rol": 3,
-    "password":"Ramon123"
-})
+])
 

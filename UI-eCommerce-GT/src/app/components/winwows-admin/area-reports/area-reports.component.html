@@ -1,1 +1,70 @@
-<p>area-reports works!</p>
+<app-nav-bar></app-nav-bar>
+<section style="background-color: hsl(219, 66%, 68%)">
+    <div class="container-xl py-2" >
+        <div class="card">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="text-center">
+                        <label class="form-label" for="lastName">Seleccione el rango de fecha para la consulta</label>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="text-center">
+                        <label class="form-label" for="lastName">Seleccine el tipo de Reporte</label>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="form-outline">
+                      <input type="date" id="lastName"  class="form-control form-control-lg" 
+                      [(ngModel)]='fechaIncial' />
+                       <div class="text-center">
+                        <label class="form-label" for="lastName">Fecha Inicial</label>
+                       </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-outline">
+                      <input type="date" id="lastName"  class="form-control form-control-lg" 
+                       [(ngModel)]="fechaFinal" />
+                       <div class="text-center">
+                        <label class="form-label" for="lastName">Fecha Final</label>
+                       </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="text-center">
+                        <!-- Example single danger button -->
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-danger dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                        Tipo de Reporte
+                        </button>
+                        <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" type="button" (click)="clickReportRopProductos()"  >Top 10 Productos mas vendidos</a></li>
+                        <li><a class="dropdown-item" type="button" (click)="clickClienteMasGanancias()">Top 5 clientes que más ganancias por compras han generado</a></li>
+                        <li><a class="dropdown-item" href="#">Something else here</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="#">Separated link</a></li>
+                        </ul>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div *ngIf="tipoReporte===0" class="card px-2">
+            <h1 class="text-center">Selecciona el reporte que quieres ver :) </h1>
+        </div>
+        <div *ngIf="tipoReporte===-1" class="card px-2">
+            <h1 class="text-center">Ningun Registro en el rango de fecha seleccionado, intente con otro rango  :) </h1>
+        </div>
+        <div *ngIf="tipoReporte===1" class="card px-2">
+            <app-table-top-productos></app-table-top-productos>
+        </div>
+        <div *ngIf="tipoReporte===2" class="card px-2">
+            <app-table-clientes-ganancias></app-table-clientes-ganancias>
+        </div>
+    </div>
+</section>
+<app-footer></app-footer>

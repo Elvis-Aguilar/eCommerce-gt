@@ -1,0 +1,21 @@
+<h1 class="text-center" > Top 5 clientes que más ganancias por compras han generado</h1>
+<table class="table table-bordered  border-info">
+    <thead>
+        <tr class="table-success">
+            <th class="text-center" scope="col">#</th>
+            <th class="text-center" scope="col">Nombre</th>
+            <th class="text-center" scope="col">Apellido</th>
+            <th class="text-center" scope="col">DPI</th>
+            <th class="text-center" scope="col">Ganancias Generadas</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr  *ngFor="let ganancia of ganancias let i= index" >
+            <th class="text-center"  scope="row">{{i+1}}</th>
+            <td class="text-center" >{{ganancia.vendedor.nombre}}</td>
+            <td class="text-center" >{{ganancia.vendedor.apellido}}</td>
+            <td class="text-center" >{{ganancia.vendedor.DPI}}</td>
+            <td class="text-center" >{{ganancia.ganancia_empresa.toFixed(2)}}</td>
+        </tr>
+    </tbody>
+</table>

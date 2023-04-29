@@ -1,3 +1,6 @@
+import { VentaService } from './../../../services/venta.service';
+import { SesionService } from 'src/app/services/sesion.service';
+import { Venta } from './../../../../models/venta';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +10,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TableTopProductosComponent implements OnInit {
 
-  constructor() { }
+  ventas:Venta[]=[]
+  constructor(private sesion:SesionService, private ventaSerice:VentaService) { }
 
   ngOnInit(): void {
+    this.ventas = this.sesion.ventas
   }
 
 }

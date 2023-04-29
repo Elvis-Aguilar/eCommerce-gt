@@ -1,4 +1,5 @@
-[
+//insert productos
+db.productos.insert([
     {
         "nombre":"Huawei NOVA 10Se Menta de 8GB Ram 128GB Rom",
         "precio": 3900.00,
@@ -52,7 +53,13 @@
         "cantidad_existente": 1
     }
 
-]
+]) 
 
 
 
+  
+
+
+
+  
+  

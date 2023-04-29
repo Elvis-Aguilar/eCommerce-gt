@@ -20,6 +20,7 @@ import { GestionPedidosComponent } from './components/windows-user-paqueteria/ge
 import { GestionProductosComponent } from './components/windows-user-paqueteria/gestion-productos/gestion-productos.component';
 import { AreaReportsComponent } from './components/winwows-admin/area-reports/area-reports.component';
 import { TableTopProductosComponent } from './components/winwows-admin/table-top-productos/table-top-productos.component';
+import { TableClientesGananciasComponent } from './components/winwows-admin/table-clientes-ganancias/table-clientes-ganancias.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { TableTopProductosComponent } from './components/winwows-admin/table-top
     GestionPedidosComponent,
     GestionProductosComponent,
     AreaReportsComponent,
-    TableTopProductosComponent
+    TableTopProductosComponent,
+    TableClientesGananciasComponent
   ],
   imports: [
     BrowserModule,

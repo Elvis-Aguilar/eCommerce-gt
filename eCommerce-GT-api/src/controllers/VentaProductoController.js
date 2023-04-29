@@ -26,7 +26,18 @@ const getProductosSinFecha = async (req, res)=> {
     res.json(venta)
 }
 
+const getProductoMasVendido = async (req, res)=> {
+    const fechaI = new Date(req.query.fechaI);
+    const fechaF = new Date(req.query.fechaF);
+    const venta = await Venta.aggregate([{$match: {fecha: {$gte: fechaI,$lt: fechaF}}},
+    {$group: {_id: {nombre_producto: "$nombre_producto",precio_producto: "$precio_producto",vendedor: "$vendedor"},cantidad_vendida: { $sum: "$cantidad_vendida" }}},
+    {$project: {_id: 0,nombre_producto: "$_id.nombre_producto",precio_producto: "$_id.precio_producto",vendedor: "$_id.vendedor",cantidad_vendida: 1}},
+    {$sort: {cantidad_vendida: -1}},{$limit: 10}])
+    res.json(venta)
+}
+
 module.exports = {
     saveVenta:saveVenta,
-    getProductosSinFecha:getProductosSinFecha
+    getProductosSinFecha:getProductosSinFecha,
+    getProductoMasVendido:getProductoMasVendido
 }

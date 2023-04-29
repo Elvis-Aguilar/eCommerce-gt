@@ -14,4 +14,8 @@ export class GananciaService {
   public saveGanancia(ganancia:Ganancia): Observable<Ganancia>{
     return this.httpClient.post<Ganancia>(this.API_URL+'save-ganancia',ganancia)
   }
+  
+  public getClientesMasGanancias(fechaI:string, fechaF:string): Observable<Ganancia[]>{
+    return this.httpClient.get<Ganancia[]>(this.API_URL+'get-cliente-mas-ganancias?fechaI='+fechaI+'&fechaF='+fechaF)
+  }
 }

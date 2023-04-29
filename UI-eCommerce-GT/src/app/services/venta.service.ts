@@ -18,4 +18,8 @@ export class VentaService {
   public getPreoductosUser(DPI:Number): Observable<Venta[]>{
     return this.httpClient.get<Venta[]>(this.API_URL+'get-ventas-user?DPI='+DPI)
   }
+
+  public getReporProductosMasVendidos(fechaInicial:string,fechaFinal:string): Observable<Venta[]>{
+    return this.httpClient.get<Venta[]>(this.API_URL+'get-ventas-mas-vendidas?fechaI='+fechaInicial+'&fechaF='+fechaFinal)
+  }
 }

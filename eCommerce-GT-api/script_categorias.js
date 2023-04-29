@@ -1,4 +1,4 @@
-[
+db.categorias.insert([
     {
         "nombre":"Tecnología",
         "descripcion":"La categoría de tecnología ofrece una amplia variedad de dispositivos y accesorios electrónicos diseñados para mejorar y simplificar la vida cotidiana. Esta categoría incluye desde teléfonos móviles y computadoras portátiles hasta dispositivos inteligentes para el hogar, cámaras digitales, sistemas de audio y video, entre otros productos",
@@ -29,4 +29,4 @@
         "descripcion":"Esta categoría puede incluir productos que van desde suministros para mascotas, herramientas y equipos deportivos hasta joyería, arte y artesanías, entre otros. Los productos de esta categoría suelen ser muy diversos, lo que la hace atractiva para los clientes que buscan algo fuera de lo común",
         "img": "/img/DC19_Oct_Fotos_PagWeb_Banners_Home_B.jpg"
     }
-]
+])

@@ -1,3 +1,4 @@
+import { AreaReportsComponent } from './components/winwows-admin/area-reports/area-reports.component';
 import { GestionProductosComponent } from './components/windows-user-paqueteria/gestion-productos/gestion-productos.component';
 import { GestionPedidosComponent } from './components/windows-user-paqueteria/gestion-pedidos/gestion-pedidos.component';
 import { WindowSegPedidoComponent } from './components/windows-user-comun/window-seg-pedido/window-seg-pedido.component';
@@ -78,6 +79,11 @@ const routes: Routes = [
   {
     path: 'area-administrativa/new-empleado',
     component: RegistroComponent,
+    canActivate: [AuthenticationService]
+  },
+  {
+    path: 'area-administrativa/area-reports',
+    component: AreaReportsComponent,
     canActivate: [AuthenticationService]
   },
   {

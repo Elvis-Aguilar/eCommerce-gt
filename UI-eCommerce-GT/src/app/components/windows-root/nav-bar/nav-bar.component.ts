@@ -64,6 +64,11 @@ export class NavBarComponent implements OnInit {
   goRegistrarNewEmpleado(){
     this.router.navigate(['area-administrativa/new-empleado'])
   }
+  
+
+  goAreaReports(){
+    this.router.navigate(['area-administrativa/area-reports'])
+  }
 
 
   
