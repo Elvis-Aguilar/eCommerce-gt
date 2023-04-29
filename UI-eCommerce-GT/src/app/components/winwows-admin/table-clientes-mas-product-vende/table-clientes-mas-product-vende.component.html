@@ -1,0 +1,21 @@
+<h1 class="text-center" >Top 5 clientes que más productos han vendido</h1>
+<table class="table table-bordered  border-info">
+    <thead>
+        <tr class="table-success">
+            <th class="text-center" scope="col">#</th>
+            <th class="text-center" scope="col">Nombre</th>
+            <th class="text-center" scope="col">Apellido</th>
+            <th class="text-center" scope="col">DPI</th>
+            <th class="text-center" scope="col">Cantidad de Productos Vendidos</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr  *ngFor="let venta of ventas let i= index" >
+            <th class="text-center"  scope="row">{{i+1}}</th>
+            <td class="text-center" >{{venta.vendedor.nombre}}</td>
+            <td class="text-center" >{{venta.vendedor.apellido}}</td>
+            <td class="text-center" >{{venta.vendedor.DPI}}</td>
+            <td class="text-center" ><b>{{venta.cantidad_vendida}}</b></td>
+        </tr>
+    </tbody>
+</table>

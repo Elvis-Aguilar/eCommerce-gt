@@ -101,7 +101,7 @@ export class CarritoCompraComponent implements OnInit {
       ganancia.fecha=this.fechaCompra
       ganancia.ganancia_empresa=Number((totalGanancia*0.05).toFixed(2))
       ganancia.ganancia_vendedor=Number((totalGanancia*0.95).toFixed(2))
-      ganancia.vendedor=comprador
+      ganancia.vendedor=pro.vendedor
       this.gananciaService.saveGanancia(ganancia).subscribe((value:Ganancia) => {
         this.savePeticion(comprador,this.limpiarProductos())
       })

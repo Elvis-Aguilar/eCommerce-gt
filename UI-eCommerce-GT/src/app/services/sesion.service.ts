@@ -26,6 +26,10 @@ export class SesionService {
 
   ventas:Venta[]=[]
   ganancias:Ganancia[]=[]
+  ventasCliente:Venta[]=[]
+  peticones:Peticion[]=[]
+  productosReport:Producto[]=[]
+
 
 
 

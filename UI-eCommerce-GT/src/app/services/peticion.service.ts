@@ -32,6 +32,10 @@ export class PeticionService {
     return this.httpClient.put<Peticion>(this.API_URL+'set-estado', peticion)
   }
 
+  public getReportClienteMasPedidos(fechaInicial:string,fechaFinal:string): Observable<Peticion[]>{
+    return this.httpClient.get<Peticion[]>(this.API_URL+'get-cliente-mas-peticiones?fechaI='+fechaInicial+'&fechaF='+fechaFinal)
+  }
+
   
 
 

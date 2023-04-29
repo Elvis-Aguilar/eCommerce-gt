@@ -132,3 +132,95 @@ db.ganancias_ventas.aggregate([
     $limit: 5
   }
 ])
+
+
+//consulta para el top de 5 cliente mas ventas ha realizado 
+db.venta_productos.aggregate([
+  {
+    $match: {
+      fecha: {
+        $gte: ISODate("2023-04-01"),
+        $lt: ISODate("2023-05-01")
+      }
+    }
+  },
+  {
+    $group: {
+      _id: {
+        vendedor: "$vendedor"
+      },
+      cantidad_vendida: { $sum: "$cantidad_vendida" }
+    }
+  },
+  {
+    $project: {
+      _id: 0,
+      vendedor: "$_id.vendedor",
+      cantidad_vendida: 1
+    }
+  },
+  {
+    $sort: {
+      cantidad_vendida: -1
+    }
+  },
+  {
+    $limit: 5
+  }
+])
+
+//Top 10 clientes que más pedidos han realizado
+db.peticiones.aggregate([
+  {
+    $match: {
+      fecha_venta: {
+        $gte: ISODate("2023-04-01"),
+        $lt: ISODate("2023-05-01")
+      }
+    }
+  },
+  {
+    $group: {
+      _id: "$comprador.DPI",
+      comprador: { $first: "$comprador" },
+      estado: { $sum: 1 }
+    }
+  },
+  {
+    $sort: {
+      estado: -1
+    }
+  },
+  {
+    $limit: 10
+  }
+])
+
+
+//Top clientes con mas productos
+db.productos.aggregate([
+  {
+    $match: {
+      estado: "Aceptado",
+      cantidad_existente: { $gt: 0 }
+    }
+  },
+  {
+    $group: {
+      _id: "$vendedor.DPI",
+      vendedor: { $first: "$vendedor" },
+      cantidad_existente: { $sum: 1 }
+    }
+  },
+  {
+    $sort: {
+      cantidad: -1
+    }
+  },
+  {
+    $limit: 10
+  }
+])
+
+
+

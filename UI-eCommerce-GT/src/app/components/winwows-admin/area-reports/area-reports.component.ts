@@ -1,3 +1,7 @@
+import { Producto } from './../../../../models/producto';
+import { ProductoService } from './../../../services/producto.service';
+import { Peticion } from './../../../../models/peticion';
+import { PeticionService } from './../../../services/peticion.service';
 import { Ganancia } from './../../../../models/ganancia';
 import { GananciaService } from './../../../services/ganancia.service';
 import { VentaService } from './../../../services/venta.service';
@@ -17,7 +21,8 @@ export class AreaReportsComponent implements OnInit {
   fechaFinal=''
   tipoReporte=0
   constructor(private sesion:SesionService, private ventaSerice:VentaService,
-    private ganaciaService:GananciaService) { }
+    private ganaciaService:GananciaService, private peticionesService:PeticionService,
+    private productoService:ProductoService) { }
 
   ngOnInit(): void {
   }
@@ -62,6 +67,61 @@ export class AreaReportsComponent implements OnInit {
         'info'
       )
     }
+  }
+
+  clickReportClienteMasVentas(){
+    this.tipoReporte=0
+    if (this.fechaFinal !== '' && this.fechaIncial !=='') {
+      this.ventaSerice.getReporClienteMasVentas(this.fechaIncial, this.fechaFinal).subscribe(
+        (value: Venta[]) =>{
+          if (value.length !== 0) {
+            this.sesion.ventasCliente = value
+            this.tipoReporte=3
+          }else{
+            this.tipoReporte =-1
+          }
+        });
+    } else {
+      Swal.fire(
+        'Upss!!',
+        'Debes seleccionar el rango de fecha',
+        'info'
+      )
+    }
+  }
+
+  clickReportClienteMasPedidos(){
+    this.tipoReporte=0
+    if (this.fechaFinal !== '' && this.fechaIncial !=='') {
+      this.peticionesService.getReportClienteMasPedidos(this.fechaIncial, this.fechaFinal).subscribe(
+        (value: Peticion[]) =>{
+          if (value.length !== 0) {
+            this.sesion.peticones = value
+            this.tipoReporte=4
+          }else{
+            this.tipoReporte =-1
+          }
+        });
+    } else {
+      Swal.fire(
+        'Upss!!',
+        'Debes seleccionar el rango de fecha',
+        'info'
+      )
+    }
+  }
+
+  clickReportClienteMasProductoVenta(){
+    this.tipoReporte=0
+    this.productoService.getReportClienteMasProductosVenta().subscribe(
+      (value: Producto[]) =>{
+        if (value.length !== 0) {
+          this.sesion.productosReport = value
+          this.tipoReporte=5
+        }else{
+          this.tipoReporte =-1
+        }
+      });
   }
 
 }

@@ -14,6 +14,9 @@ router.post('/save-producto',ControllerProducto.saveProducto)
 router.put('/umentar-cantidad',ControllerProducto.aumentarProducto)
 router.put('/set-Estado',ControllerProducto.setEstado)
 
+router.get('/get-cliente-mas-productos',ControllerProducto.getClienteMasProductoVenta)
+
+
 
 router.post('/save-img-producto', ControllerProducto.upload.single('imagen'), function(req, res) {
     const fileName = req.file.originalname;

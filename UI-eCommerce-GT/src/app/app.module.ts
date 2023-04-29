@@ -21,6 +21,9 @@ import { GestionProductosComponent } from './components/windows-user-paqueteria/
 import { AreaReportsComponent } from './components/winwows-admin/area-reports/area-reports.component';
 import { TableTopProductosComponent } from './components/winwows-admin/table-top-productos/table-top-productos.component';
 import { TableClientesGananciasComponent } from './components/winwows-admin/table-clientes-ganancias/table-clientes-ganancias.component';
+import { TableClientesMasProductVendeComponent } from './components/winwows-admin/table-clientes-mas-product-vende/table-clientes-mas-product-vende.component';
+import { TableClientesMasPedidosComponent } from './components/winwows-admin/table-clientes-mas-pedidos/table-clientes-mas-pedidos.component';
+import { TableClientesMasProductosComponent } from './components/winwows-admin/table-clientes-mas-productos/table-clientes-mas-productos.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +44,10 @@ import { TableClientesGananciasComponent } from './components/winwows-admin/tabl
     GestionProductosComponent,
     AreaReportsComponent,
     TableTopProductosComponent,
-    TableClientesGananciasComponent
+    TableClientesGananciasComponent,
+    TableClientesMasProductVendeComponent,
+    TableClientesMasPedidosComponent,
+    TableClientesMasProductosComponent
   ],
   imports: [
     BrowserModule,

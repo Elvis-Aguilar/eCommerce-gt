@@ -22,6 +22,7 @@ const getProductosUserPendinte = async (req, res) => {
     const productosUser = await Producto.find({estado:'Pendiente',"vendedor.DPI":Number(req.query.DPI)})
     res.json(productosUser)
 }
+
 const getProductosUserRechazado = async (req, res) => {
     const productosUser = await Producto.find({estado:'Rechazado',"vendedor.DPI":Number(req.query.DPI)})
     res.json(productosUser)
@@ -79,9 +80,14 @@ const storage = multer.diskStorage({
     }
 });
   
-  const upload = multer({ storage: storage })
+const upload = multer({ storage: storage })
 
-
+const getClienteMasProductoVenta = async (req, res) => {
+    const productosUser = await Producto.aggregate([{$match: {estado: "Aceptado",cantidad_existente: { $gt: 0 }}},
+    {$group: {_id: "$vendedor.DPI",vendedor: { $first: "$vendedor" },cantidad_existente: { $sum: 1 }}},
+    {$sort: {cantidad: -1}},{$limit: 10}])
+    res.json(productosUser)
+}
 
 
 
@@ -96,5 +102,6 @@ module.exports = {
     getProductosPendientes:getProductosPendientes,
     setEstado:setEstado,
     getProductosUserRechazado:getProductosUserRechazado,
-    getProductosUserPendinte:getProductosUserPendinte
+    getProductosUserPendinte:getProductosUserPendinte,
+    getClienteMasProductoVenta:getClienteMasProductoVenta
 }

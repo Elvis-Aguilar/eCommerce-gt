@@ -43,9 +43,10 @@
                         <ul class="dropdown-menu">
                         <li><a class="dropdown-item" type="button" (click)="clickReportRopProductos()"  >Top 10 Productos mas vendidos</a></li>
                         <li><a class="dropdown-item" type="button" (click)="clickClienteMasGanancias()">Top 5 clientes que más ganancias por compras han generado</a></li>
-                        <li><a class="dropdown-item" href="#">Something else here</a></li>
+                        <li><a class="dropdown-item" type="button" (click)="clickReportClienteMasVentas()" >Top 5 clientes que más productos han vendido </a></li>
+                        <li><a class="dropdown-item" type="button" (click)="clickReportClienteMasPedidos()" >Top 10 clientes que más pedidos han realizado </a></li>
                         <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" href="#">Separated link</a></li>
+                        <li><a class="dropdown-item" type="button" (click)="clickReportClienteMasProductoVenta()" >Top 10 clientes que más productos tienen a la venta.</a></li>
                         </ul>
                     </div>
                 </div>
@@ -64,6 +65,15 @@
         </div>
         <div *ngIf="tipoReporte===2" class="card px-2">
             <app-table-clientes-ganancias></app-table-clientes-ganancias>
+        </div>
+        <div *ngIf="tipoReporte===3" class="card px-2">
+            <app-table-clientes-mas-product-vende></app-table-clientes-mas-product-vende> 
+        </div>
+        <div *ngIf="tipoReporte===4" class="card px-2">
+            <app-table-clientes-mas-pedidos></app-table-clientes-mas-pedidos> 
+        </div>
+        <div *ngIf="tipoReporte===5" class="card px-2">
+            <app-table-clientes-mas-productos></app-table-clientes-mas-productos> 
         </div>
     </div>
 </section>

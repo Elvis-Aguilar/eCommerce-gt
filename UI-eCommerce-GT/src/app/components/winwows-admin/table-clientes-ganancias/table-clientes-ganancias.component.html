@@ -6,7 +6,8 @@
             <th class="text-center" scope="col">Nombre</th>
             <th class="text-center" scope="col">Apellido</th>
             <th class="text-center" scope="col">DPI</th>
-            <th class="text-center" scope="col">Ganancias Generadas</th>
+            <th class="text-center" scope="col">Ganancias Vendedor(cliente)</th>
+            <th class="text-center" scope="col">Ganancias Empresa</th>
         </tr>
     </thead>
     <tbody>
@@ -15,7 +16,8 @@
             <td class="text-center" >{{ganancia.vendedor.nombre}}</td>
             <td class="text-center" >{{ganancia.vendedor.apellido}}</td>
             <td class="text-center" >{{ganancia.vendedor.DPI}}</td>
-            <td class="text-center" >{{ganancia.ganancia_empresa.toFixed(2)}}</td>
+            <td class="text-center" >Q {{ganancia.ganancia_vendedor.toFixed(2)}}</td>
+            <td class="text-center" ><b>Q {{ganancia.ganancia_empresa.toFixed(2)}}</b></td>
         </tr>
     </tbody>
 </table>

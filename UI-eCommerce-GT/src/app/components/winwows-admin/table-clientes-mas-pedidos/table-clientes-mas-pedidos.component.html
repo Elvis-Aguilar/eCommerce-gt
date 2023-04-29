@@ -1,0 +1,21 @@
+<h1 class="text-center" >Top 10 clientes que más pedidos han realizado</h1>
+<table class="table table-bordered  border-info">
+    <thead>
+        <tr class="table-success">
+            <th class="text-center" scope="col">#</th>
+            <th class="text-center" scope="col">Nombre</th>
+            <th class="text-center" scope="col">Apellido</th>
+            <th class="text-center" scope="col">DPI</th>
+            <th class="text-center" scope="col">Cantidad de Pedidos Realizados</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr  *ngFor="let peticion of peticiones let i= index" >
+            <th class="text-center"  scope="row">{{i+1}}</th>
+            <td class="text-center" >{{peticion.comprador.nombre}}</td>
+            <td class="text-center" >{{peticion.comprador.apellido}}</td>
+            <td class="text-center" >{{peticion.comprador.DPI}}</td>
+            <td class="text-center" ><b>{{peticion.estado}}</b></td>
+        </tr>
+    </tbody>
+</table>

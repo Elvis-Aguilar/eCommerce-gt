@@ -40,10 +40,21 @@ const setEstadoEntregado = async (req, res )=> {
     res.json(req.body)
 }
 
+const getClienteMasPedidos = async (req, res)=> {
+    const fechaI = new Date(req.query.fechaI);
+    const fechaF = new Date(req.query.fechaF);
+    const peticiones = await Peticion.aggregate([{$match: {fecha_venta: {$gte: fechaI,$lt: fechaF}}},
+    {$group: {_id: "$comprador.DPI",comprador: { $first: "$comprador" },estado: { $sum: 1 }}},
+    {$sort: {estado: -1}},{$limit: 10}]);
+    res.json(peticiones)
+}
+
+
 module.exports = {
     savePeticion:savePeticion,
     getPeticionEnCuros:getPeticionEnCuros,
     getPeticionEntregado:getPeticionEntregado,
     getPeticionEnCurosAll:getPeticionEnCurosAll,
-    setEstadoEntregado:setEstadoEntregado
+    setEstadoEntregado:setEstadoEntregado,
+    getClienteMasPedidos:getClienteMasPedidos
 }

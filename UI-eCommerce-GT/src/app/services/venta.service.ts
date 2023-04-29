@@ -22,4 +22,8 @@ export class VentaService {
   public getReporProductosMasVendidos(fechaInicial:string,fechaFinal:string): Observable<Venta[]>{
     return this.httpClient.get<Venta[]>(this.API_URL+'get-ventas-mas-vendidas?fechaI='+fechaInicial+'&fechaF='+fechaFinal)
   }
+
+  public getReporClienteMasVentas(fechaInicial:string,fechaFinal:string): Observable<Venta[]>{
+    return this.httpClient.get<Venta[]>(this.API_URL+'get-cliente-mas-ventas?fechaI='+fechaInicial+'&fechaF='+fechaFinal)
+  }
 }

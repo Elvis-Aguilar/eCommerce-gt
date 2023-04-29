@@ -50,4 +50,8 @@ export class ProductoService {
     return this.httpClient.put<Producto>(this.API_URL+'set-Estado',producto);
   }
 
+  public getReportClienteMasProductosVenta(): Observable<Producto[]>{
+    return this.httpClient.get<Producto[]>(this.API_URL+'get-cliente-mas-productos');
+  }
+
 }
