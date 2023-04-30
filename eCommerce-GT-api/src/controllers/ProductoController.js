@@ -13,6 +13,12 @@ const getProductos = async (req, res) => {
     res.json(productos)
 }
 
+const getProductoslimit11 = async (req, res) => {
+    const productos = await Producto.aggregate([{$match: {estado: 'Aceptado',cantidad_existente: { $gt: 0 }}},
+    {$limit: 10}])
+    res.json(productos)
+}
+
 const getProductosUser = async (req, res) => {
     const productosUser = await Producto.find({estado:'Aceptado',"vendedor.DPI":Number(req.query.DPI)})
     res.json(productosUser)
@@ -56,7 +62,7 @@ const saveProducto =async (req, res) => {
         img: req.body.img,
         descripcion: req.body.descripcion,
         vendedor: req.body.vendedor,
-        categorias:req.body.categaumentarProductoorias,
+        categorias:req.body.categorias,
         cantidad_existente:req.body.cantidad_existente,
         estado:'Pendiente'
     })
@@ -85,7 +91,7 @@ const upload = multer({ storage: storage })
 const getClienteMasProductoVenta = async (req, res) => {
     const productosUser = await Producto.aggregate([{$match: {estado: "Aceptado",cantidad_existente: { $gt: 0 }}},
     {$group: {_id: "$vendedor.DPI",vendedor: { $first: "$vendedor" },cantidad_existente: { $sum: 1 }}},
-    {$sort: {cantidad: -1}},{$limit: 10}])
+    {$sort: {cantidad_existente: -1}},{$limit: 10}])
     res.json(productosUser)
 }
 
@@ -103,5 +109,6 @@ module.exports = {
     setEstado:setEstado,
     getProductosUserRechazado:getProductosUserRechazado,
     getProductosUserPendinte:getProductosUserPendinte,
-    getClienteMasProductoVenta:getClienteMasProductoVenta
+    getClienteMasProductoVenta:getClienteMasProductoVenta,
+    getProductoslimit11:getProductoslimit11
 }

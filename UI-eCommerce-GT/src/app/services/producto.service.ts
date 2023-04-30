@@ -16,6 +16,10 @@ export class ProductoService {
     return this.httpClient.get<Producto[]>(this.API_URL+'get-productos?categoria='+categoria.nombre)
   }
 
+  public getProductosLimit11(): Observable<Producto[]>{
+    return this.httpClient.get<Producto[]>(this.API_URL+'get-productos-limit')
+  }
+
   public getImgProducto(url:String): Observable<Blob>{
     return this.httpClient.get(this.API_URL+'get-img-producto?url='+url, { responseType: 'blob'});
   }

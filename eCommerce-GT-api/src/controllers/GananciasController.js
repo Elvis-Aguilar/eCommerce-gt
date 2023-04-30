@@ -20,8 +20,8 @@ const getClienteMasGanancias = async (req, res)=> {
     const fechaI = new Date(req.query.fechaI);
     const fechaF = new Date(req.query.fechaF);
     const ganancia = await Ganancia.aggregate([{$match: {fecha: {$gte: fechaI,$lt: fechaF}}},
-    {$group: {_id: {vendedor: "$vendedor"},ganancia_empresa: { $sum: "$ganancia_empresa" },ganancia_vendedor: { $sum: "$ganancia_vendedor" }}},
-    {$project: {_id: 0,vendedor: "$_id.vendedor",ganancia_empresa: 1,ganancia_vendedor:1}},{$sort: {ganancia_empresa: -1}},{$limit: 5}])
+    {$group: {_id: "$vendedor.DPI",vendedor: { $first: "$vendedor" },ganancia_empresa: { $sum: "$ganancia_empresa" },ganancia_vendedor: { $sum: "$ganancia_vendedor" },cantidad: { $sum: 1 }}},
+    {$sort: {cantidad: -1}},{$sort: {ganancia_empresa: -1}},{$limit: 5}])
     res.json(ganancia)
 }
 

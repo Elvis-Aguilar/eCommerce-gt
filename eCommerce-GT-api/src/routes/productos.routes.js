@@ -5,6 +5,7 @@ const ControllerProducto = require('../controllers/ProductoController')
 const router = express.Router();
 
 router.get('/get-productos',ControllerProducto.getProductos)
+router.get('/get-productos-limit',ControllerProducto.getProductoslimit11)
 router.get('/get-img-producto',ControllerProducto.getImgProducto)
 router.get('/get-producto-user',ControllerProducto.getProductosUser)
 router.get('/get-producto-user-pendiente',ControllerProducto.getProductosUserPendinte)

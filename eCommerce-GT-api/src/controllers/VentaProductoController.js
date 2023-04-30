@@ -40,8 +40,7 @@ const getClienteMasVentas = async (req, res)=> {
     const fechaI = new Date(req.query.fechaI);
     const fechaF = new Date(req.query.fechaF);
     const venta = await Venta.aggregate([{$match: {fecha: {$gte: fechaI,$lt: fechaF}}},
-    {$group: {_id: {vendedor: "$vendedor"},cantidad_vendida: { $sum: "$cantidad_vendida" }}},
-    {$project: {_id: 0,vendedor: "$_id.vendedor",cantidad_vendida: 1}},
+    {$group: {_id: "$vendedor.DPI",vendedor: { $first: "$vendedor" },cantidad_vendida: { $sum: "$cantidad_vendida" }}},
     {$sort: {cantidad_vendida: -1}},{$limit: 15}])
     res.json(venta)
 }

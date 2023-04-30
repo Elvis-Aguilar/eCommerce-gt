@@ -108,19 +108,16 @@ db.ganancias_ventas.aggregate([
   },
   {
     $group: {
-      _id: {
-        vendedor: "$vendedor"
-      },
+      _id: "$vendedor.DPI",
+      vendedor: { $first: "$vendedor" },
       ganancia_empresa: { $sum: "$ganancia_empresa" },
-      ganancia_vendedor: { $sum: "$ganancia_vendedor" }
+      ganancia_vendedor: { $sum: "$ganancia_vendedor" },
+      cantidad: { $sum: 1 }
     }
   },
   {
-    $project: {
-      _id: 0,
-      vendedor: "$_id.vendedor",
-      ganancia_empresa: 1,
-      ganancia_vendedor:1
+    $sort: {
+      cantidad: -1
     }
   },
   {
@@ -146,17 +143,9 @@ db.venta_productos.aggregate([
   },
   {
     $group: {
-      _id: {
-        vendedor: "$vendedor"
-      },
+      _id: "$vendedor.DPI",
+      vendedor: { $first: "$vendedor" },
       cantidad_vendida: { $sum: "$cantidad_vendida" }
-    }
-  },
-  {
-    $project: {
-      _id: 0,
-      vendedor: "$_id.vendedor",
-      cantidad_vendida: 1
     }
   },
   {
@@ -215,6 +204,18 @@ db.productos.aggregate([
   {
     $sort: {
       cantidad: -1
+    }
+  },
+  {
+    $limit: 10
+  }
+])
+
+db.productos.aggregate([
+  {
+    $match: {
+      estado: 'Aceptado',
+      cantidad_existente: { $gt: 0 }
     }
   },
   {
