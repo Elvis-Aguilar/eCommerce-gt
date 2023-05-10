@@ -88,9 +88,11 @@ export class FormProductoComponent implements OnInit {
 
   getVentas(){
     this.ventaService.getPreoductosUser(this.sesion.usuario.DPI).subscribe((value: Venta[]) =>{
-      this.ventas=value
-      this.ventas[0].fecha = new Date(this.ventas[0].fecha)
-      this.limpiarFechasVentas()
+      if (value.length > 0) {
+        this.ventas=value
+        this.ventas[0].fecha = new Date(this.ventas[0].fecha)
+        this.limpiarFechasVentas()
+      }
     })
   }
 

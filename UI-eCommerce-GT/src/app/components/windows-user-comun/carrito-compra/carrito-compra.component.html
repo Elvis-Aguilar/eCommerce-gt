@@ -138,22 +138,15 @@
                         Elegir Tarjeta
                       </button>
                       <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">Action</a></li>
-                        <li>
-                          <a class="dropdown-item" href="#">Another action</a>
-                        </li>
-                        <li>
-                          <a class="dropdown-item" href="#"
-                            >Something else here</a
-                          >
-                        </li>
+                        <li *ngFor="let tarjeta of tarjetas; let i = index"
+                        ><a class="dropdown-item" type="button " (click)="setValoresTarjeta(i)" >{{tarjeta.alias}}</a></li>
                         <li><hr class="dropdown-divider" /></li>
                         <li>
                           <a class="dropdown-item" type="button" (click)="newTarjetClick()">Nueva tarjeta</a>
                         </li>
                       </ul>
                     </div>
-                    <div *ngIf="newTarjet" class="row">
+                    <div *ngIf="newTarjet || mostarTarjeta" class="row">
                       <div class="form-outline">
                         <input
                           type="number"
@@ -182,7 +175,27 @@
                         <label class="form-label" for="form3Example1m1">
                           Codigo de seguridad
                         </label>
-                        <button type="button" class="btn btn-info">Info</button>
+                        <input
+                          type="text"
+                          id="form3Example1m1"
+                          class="form-control form-control-lg"
+                          placeholder="solo si guardara la tarjeta"
+                          [(ngModel)]='alias'
+                        />
+                        <label class="form-label" for="form3Example1m1">
+                          Alias!!
+                        </label>
+                        <br>
+                        <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+                          <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" checked  (click)="setGuardar(2)" >
+                          <label class="btn btn-outline-primary" for="btnradio1">No</label>
+                        
+                          <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off"  (click)="setGuardar(1)">
+                          <label class="btn btn-outline-primary" for="btnradio2">Si</label>
+                        </div>
+                        <label class="form-label" for="form3Example1m1">
+                          Guardar Tarjeta
+                        </label>
                       </div>
                     </div>
                   </div>

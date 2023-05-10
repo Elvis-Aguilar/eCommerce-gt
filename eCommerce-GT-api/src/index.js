@@ -6,6 +6,8 @@ const productosRoutes = require('./routes/productos.routes')
 const ventasRoutes = require('./routes/ventarProducto.routes')
 const gananciaRoutes = require('./routes/ganancias.routes')
 const peticionRoutes = require('./routes/peticiones.routes')
+const tarjetaRoutes = require('./routes/tarjeta.routes')
+
 const controllerProducto = require('./controllers/ProductoController')
 const path = require('path');
 const multer = require('multer');
@@ -53,6 +55,8 @@ app.use('/api/ventas', ventasRoutes)
 app.use('/api/ganancias', gananciaRoutes)
 
 app.use('/api/peticiones', peticionRoutes)
+
+app.use('/api/tarjeta', tarjetaRoutes)
 
 
 

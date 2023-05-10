@@ -1,3 +1,4 @@
+import { TarjetaServiceService } from './../../../services/tarjeta-service.service';
 import { Peticion } from './../../../../models/peticion';
 import { PeticionService } from './../../../services/peticion.service';
 import { GananciaService } from './../../../services/ganancia.service';
@@ -10,6 +11,7 @@ import { Producto } from './../../../../models/producto';
 import { SesionService } from 'src/app/services/sesion.service';
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import Swal from 'sweetalert2';
+import { Tarjeta } from 'src/models/tarjeta';
 
 @Component({
   selector: 'app-carrito-compra',
@@ -23,19 +25,28 @@ export class CarritoCompraComponent implements OnInit {
   numberTarjeta!:number
   fechaVencimiento!:Date
   codigoSeguridad!:number
+  alias!:String
   newTarjet=false
+  mostarTarjeta=false
   fechaCompra!:Date
   @ViewChild('fechaInput') fechaInput!: ElementRef;
+  tarjetas:Tarjeta[]=[]
+  guardarTarjeta=false
 
   constructor(private sesion:SesionService,
               private ventaService:VentaService,
               private gananciaService:GananciaService,
-              private peticionService:PeticionService) { }
+              private peticionService:PeticionService, private tarjetaService:TarjetaServiceService) { }
 
   ngOnInit(): void {
     this.sesion.mostrarHead= false
     this.productos = this.sesion.productosShopping
     this.calculosTotales()
+    this.tarjetaService.getTarjetasUser(Number(this.sesion.usuario.DPI)).subscribe((value:Tarjeta[]) => {
+      if (value.length > 0) {
+        this.tarjetas=value
+      }
+    })
     
   }
 
@@ -66,12 +77,24 @@ export class CarritoCompraComponent implements OnInit {
   }
 
   comprarCarrito(){
-   
     if (this.comprovarCarrito()) {
       const comprador = new Usuario()
       comprador.nombre = this.sesion.usuario.nombre
       comprador.DPI=this.sesion.usuario.DPI
       comprador.apellido = this.sesion.usuario.apellido
+      if (this.guardarTarjeta &&  this.newTarjet) {
+        const tarjeta=new Tarjeta()
+        tarjeta.alias=this.alias+''
+        tarjeta.codigo_seguridad=this.codigoSeguridad
+        tarjeta.fecha_vencimiento=this.fechaVencimiento
+        tarjeta.numero_tarjeta=this.numberTarjeta
+        tarjeta.usuario=comprador
+        this.tarjetaService.saveTarjeta(tarjeta).subscribe(
+          (value:Tarjeta)=>{
+            this.tarjetas.push(value)
+          }
+        )
+      }
       this.saveProductoFor(comprador)
       
     } 
@@ -150,7 +173,22 @@ export class CarritoCompraComponent implements OnInit {
     return product
   }
 
-  
+  setGuardar(num:number){
+    if (num === 1) {
+      this.guardarTarjeta =true
+    }else{
+      this.guardarTarjeta=false
+    }
+  }
+
+  setValoresTarjeta(index:number){
+    const tarjet=this.tarjetas[index]
+    this.alias=tarjet.alias
+    this.codigoSeguridad=tarjet.codigo_seguridad
+    this.fechaVencimiento=tarjet.fecha_vencimiento
+    this.numberTarjeta=tarjet.numero_tarjeta
+    this.mostarTarjeta=true
+  }
 
   private comprovarCarrito():boolean{
     try {
@@ -179,8 +217,36 @@ export class CarritoCompraComponent implements OnInit {
       );
       return false
     }
+    
+    if (!this.comprobarTarjeta()) {
+      Swal.fire(
+        'Error',
+        'Debes llenar los campos de la tarjeta o eleigir una tarjeta registrada',
+        'error'
+      );
+      return false
+    }
+
     return true
 
+  }
+
+  comprobarTarjeta():boolean{
+    if (this.numberTarjeta === undefined || this.numberTarjeta == null) {
+      return false
+    }
+    if (this.fechaVencimiento === undefined || this.fechaVencimiento == null){
+      return false
+    }
+    if (this.codigoSeguridad === undefined || this.codigoSeguridad == null) {
+      return false
+    }
+    if (this.guardarTarjeta &&  this.newTarjet) {
+      if (this.alias === undefined && this.alias === "") {
+        return false
+      }
+    }
+    return true
   }
 
 
