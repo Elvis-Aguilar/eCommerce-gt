@@ -185,6 +185,7 @@ export class FormProductoComponent implements OnInit {
       'Producto enviado a los encargados de paqueteria para Verificacion si el paquete es aceptado se publicara',
       'success'
     );
+    this.mostrarFormulario=false
     
   }
 
